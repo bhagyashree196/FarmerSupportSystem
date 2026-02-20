@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Scheme Details | Kisan Sahayata{% endblock %}
+{% block nav_extra %}
+<button onclick="history.back()" class="nav-home-btn ms-2"><i class="fas fa-arrow-left me-1"></i>Back</button>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div id="schemeDetailContainer">
+    <div class="text-center py-5">
+      <div class="spinner-border text-success" role="status"></div>
+      <p class="mt-2 text-muted">Loading scheme details...</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const sid = new URLSearchParams(window.location.search).get('id');
+if (!sid) {
+  document.getElementById('schemeDetailContainer').innerHTML = '<div class="alert alert-danger">No scheme ID provided.</div>';
+} else {
+  fetch('/api/schemes/' + sid).then(r=>r.json()).then(s => {
+    const docsHtml = (s.documents||[]).map(d=>`<li class="list-group-item"><i class="fas fa-file-alt text-success me-2"></i>${d}</li>`).join('');
+    const howHtml = (s.how_to_apply||'').split('\n').filter(x=>x.trim()).map((step,i)=>`<li class="mb-2"><span class="step-num">${i+1}</span> ${step}</li>`).join('');
+    const faqHtml = (s.faqs||[]).map(f=>`<li class="list-group-item"><i class="fas fa-question-circle text-warning me-2"></i>${f}</li>`).join('');
+
+    document.getElementById('schemeDetailContainer').innerHTML = `
+      <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="card-header-detail bg-success text-white p-4">
+          <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+            <div>
+              <span class="badge bg-white text-success fw-bold mb-2">${s.category.toUpperCase()}</span>
+              <span class="badge bg-warning text-dark fw-bold mb-2 ms-1">${s.scheme_type}</span>
+              <h2 class="mb-1">${s.title}</h2>
+              <p class="mb-0 opacity-75"><i class="fas fa-clock me-1"></i>Deadline: ${s.deadline||'Ongoing'}</p>
+            </div>
+            <a href="${s.official_url||'#'}" target="_blank" class="btn btn-warning fw-bold rounded-pill">
+              <i class="fas fa-external-link-alt me-1"></i>Official Website
+            </a>
+          </div>
+        </div>
+
+        <div class="card-body p-4">
+          <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-md-8">
+              <h5 class="text-success border-bottom pb-2"><i class="fas fa-info-circle me-2"></i>Description</h5>
+              <p class="text-muted">${s.description}</p>
+
+              <h5 class="text-success border-bottom pb-2 mt-4"><i class="fas fa-list-ol me-2"></i>How to Apply</h5>
+              <ol class="apply-steps">${howHtml || '<li>Contact your nearest Agriculture Office</li>'}</ol>
+
+              <h5 class="text-success border-bottom pb-2 mt-4"><i class="fas fa-question-circle me-2"></i>Important Information</h5>
+              <ul class="list-group list-group-flush">${faqHtml || '<li class="list-group-item">Contact helpline for details</li>'}</ul>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-4">
+              <div class="info-card p-3 rounded-3 bg-light mb-3">
+                <h6 class="text-success fw-bold"><i class="fas fa-check-circle me-2"></i>Eligibility</h6>
+                <p class="mb-0 small">${s.eligibility||'All eligible farmers'}</p>
+              </div>
+              <div class="info-card p-3 rounded-3 bg-light mb-3">
+                <h6 class="text-success fw-bold"><i class="fas fa-gift me-2"></i>Benefits</h6>
+                <p class="mb-0 small">${s.benefits||'See official website'}</p>
+              </div>
+              <div class="info-card p-3 rounded-3 bg-light mb-3">
+                <h6 class="text-success fw-bold"><i class="fas fa-calendar me-2"></i>Period</h6>
+                <p class="mb-0 small">Start: ${s.start_date||'N/A'}<br>End: ${s.end_date||'Ongoing'}</p>
+              </div>
+              <div class="info-card p-3 rounded-3 bg-light mb-3">
+                <h6 class="text-success fw-bold"><i class="fas fa-phone me-2"></i>Helpline</h6>
+                <p class="mb-0 small">${s.phone||'Contact Agriculture Office'}</p>
+              </div>
+
+              <h6 class="text-success fw-bold mt-3"><i class="fas fa-file-alt me-2"></i>Documents Required</h6>
+              <ul class="list-group list-group-flush small">${docsHtml || '<li class="list-group-item">Aadhar Card, Land Records</li>'}</ul>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).catch(()=>{
+    document.getElementById('schemeDetailContainer').innerHTML = '<div class="alert alert-danger">Scheme not found.</div>';
+  });
+}
+</script>
+{% endblock %}

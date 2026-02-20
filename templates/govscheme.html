@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Government Schemes | Kisan Sahayata{% endblock %}
+{% block nav_extra %}
+<a href="{{ url_for('index') }}" class="nav-home-btn ms-2"><i class="fas fa-home me-1"></i>Home</a>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="scheme-header text-center">
+    <h1 class="scheme-title"><span class="emoji">📋</span>Government Schemes</h1>
+    <p class="scheme-subtitle" id="selectedTypeText">Explore Central & Maharashtra Government Agricultural Schemes</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar d-flex gap-2 flex-wrap justify-content-center mb-4">
+    <button class="filter-btn active" data-type="All">All Schemes</button>
+    <button class="filter-btn" data-type="Central">Central</button>
+    <button class="filter-btn" data-type="Maharashtra">Maharashtra</button>
+  </div>
+
+  <div id="schemeContainer" class="scheme-grid mt-2">
+    <div class="text-center py-5">
+      <div class="spinner-border text-success" role="status"></div>
+      <p class="mt-2 text-muted">Loading schemes...</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const params = new URLSearchParams(window.location.search);
+let currentType = params.get('type') || localStorage.getItem('schemeType') || 'All';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  if(btn.dataset.type === currentType) btn.classList.add('active');
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    currentType = this.dataset.type;
+    loadSchemes(currentType);
+  });
+});
+
+function loadSchemes(type) {
+  const container = document.getElementById('schemeContainer');
+  container.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div><p class="mt-2 text-muted">Loading...</p></div>';
+  let url = '/api/schemes?category=govt';
+  if (type && type !== 'All') url += '&type=' + type;
+  fetch(url).then(r=>r.json()).then(schemes => {
+    if (schemes.length === 0) {
+      container.innerHTML = '<div class="text-center py-5"><h4 class="text-muted">No schemes found</h4></div>';
+      return;
+    }
+    container.innerHTML = schemes.map(s => `
+      <div class="scheme-card-modern">
+        <span class="badge ${s.scheme_type==='Central'?'bg-primary':'bg-success'} mb-2">${s.scheme_type}</span>
+        <span class="badge bg-success ms-1 mb-2">${s.status==='active'?'Active':'Inactive'}</span>
+        <h4>${s.title}</h4>
+        <p><b>Eligibility:</b> ${s.eligibility||'See details'}</p>
+        <p><b>Benefits:</b> ${(s.benefits||'').substring(0,80)}...</p>
+        <p><b>Deadline:</b> ${s.deadline||'Ongoing'}</p>
+        <div class="scheme-btns-modern">
+          <a href="${s.official_url||'#'}" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="/scheme_detail?id=${s.id}" class="btn-details">View Details</a>
+        </div>
+      </div>`).join('');
+  });
+}
+loadSchemes(currentType);
+</script>
+{% endblock %}

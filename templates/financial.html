@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Financial Support | Kisan Sahayata{% endblock %}
+{% block nav_extra %}
+<a href="{{ url_for('index') }}" class="nav-home-btn ms-2"><i class="fas fa-home me-1"></i>Home</a>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="scheme-header text-center">
+    <h1 class="scheme-title"><span class="emoji">💰</span>Financial Support</h1>
+    <p class="scheme-subtitle">Loans, subsidies, grants & financial assistance for farmers</p>
+  </div>
+  <div class="filter-bar d-flex gap-2 flex-wrap justify-content-center mb-4">
+    <button class="filter-btn active" data-type="All">All</button>
+    <button class="filter-btn" data-type="Central">Central</button>
+    <button class="filter-btn" data-type="Maharashtra">Maharashtra</button>
+  </div>
+  <div id="financialContainer" class="scheme-grid mt-2">
+    <div class="text-center py-5"><div class="spinner-border text-success"></div></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const params = new URLSearchParams(window.location.search);
+let currentType = params.get('type') || 'All';
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  if(btn.dataset.type===currentType) btn.classList.add('active');
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    currentType = this.dataset.type;
+    loadSchemes(currentType);
+  });
+});
+function loadSchemes(type) {
+  const c = document.getElementById('financialContainer');
+  c.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div></div>';
+  let url = '/api/schemes?category=financial';
+  if(type && type!=='All') url += '&type='+type;
+  fetch(url).then(r=>r.json()).then(schemes=>{
+    if(!schemes.length){c.innerHTML='<div class="text-center py-5"><h4 class="text-muted">No schemes found</h4></div>';return;}
+    c.innerHTML = schemes.map(s=>`
+      <div class="scheme-card-modern">
+        <span class="badge ${s.scheme_type==='Central'?'bg-primary':'bg-success'} mb-2">${s.scheme_type}</span>
+        <h4>${s.title}</h4>
+        <p><b>Eligibility:</b> ${s.eligibility||'See details'}</p>
+        <p><b>Benefits:</b> ${(s.benefits||'').substring(0,80)}...</p>
+        <p><b>Deadline:</b> ${s.deadline||'Ongoing'}</p>
+        <div class="scheme-btns-modern">
+          <a href="${s.official_url||'#'}" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="/scheme_detail?id=${s.id}" class="btn-details">View Details</a>
+        </div>
+      </div>`).join('');
+  });
+}
+loadSchemes(currentType);
+</script>
+{% endblock %}
