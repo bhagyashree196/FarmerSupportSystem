@@ -28,7 +28,7 @@
 
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e9f2e9 100%);
+    background: linear-gradient(135deg, #dbe5c9 0%, #d9e9b9 100%);
     color: var(--text-dark);
     line-height: 1.6;
     min-height: 100vh;
@@ -775,3 +775,17 @@ body {
 .shadow-hover:hover {
     box-shadow: var(--shadow-lg);
 }
+
+/* Hide Google Translate UI */
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-combo {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+

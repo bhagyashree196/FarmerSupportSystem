@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top py-2">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="rounded-circle me-2" width="40" height="40" alt="Kisan Sahayata Logo" onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=KS'">
+      <img src="{{ url_for('static', filename='images/logo2.jpeg') }}" class="rounded-circle me-2" width="40" height="40" alt="Kisan Sahayata Logo" onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=KS'">
       <span class="fw-bold fs-4">Kisan Sahayata</span>
     </a>
     <div class="d-flex align-items-center gap-2">
@@ -25,10 +25,17 @@
 {% block content %}
 
 <!-- HERO -->
+<!-- HERO -->
 <section class="hero-section">
   <div class="container text-center">
-    <h1 id="welcomeText" class="hero-title">🌾 Kisan Sahayata</h1>
+    <h1 id="welcomeText" class="hero-title">
+      <img src="../static/images/logo2.jpeg" alt="Kisan Sahayata Logo" class="hero-logo">
+     Kisan Sahayata
+    </h1>
     <p class="hero-subtitle" id="heroSubtitle">Empowering Farmers with Government Schemes & Financial Support</p>
+    <div class="row justify-content-center mt-4">
+      <!-- Your content here -->
+    </div>
   </div>
 </section>
 
@@ -78,7 +85,7 @@
 
 <!-- QUICK LINKS -->
 <div class="container quick-links mt-5">
-  <h2 class="section-title text-center mb-4">⚡ Quick Access</h2>
+  <h2 class="section-title text-center mb-4 align:center">⚡ Quick Access</h2>
   <div class="row g-3">
     <div class="col-md-6">
       <a href="{{ url_for('govscheme') }}" class="link-card">
