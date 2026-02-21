@@ -5,11 +5,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top py-2">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="{{ url_for('static', filename='images/logo2.jpeg') }}" class="rounded-circle me-2" width="40" height="40" alt="Kisan Sahayata Logo" onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=KS'">
+      <img src="{{ url_for('static', filename='images/logo2.jpeg') }}" class="rounded-circle me-2" width="40"
+        height="40" alt="Kisan Sahayata Logo"
+        onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=KS'">
       <span class="fw-bold fs-4">Kisan Sahayata</span>
     </a>
     <div class="d-flex align-items-center gap-2">
-      <select id="languageSwitcher" class="form-select form-select-sm bg-light border-0" style="width:120px; border-radius:20px;">
+      <select id="languageSwitcher" class="form-select form-select-sm bg-light border-0"
+        style="width:120px; border-radius:20px;">
         <option value="en">🇬🇧 English</option>
         <option value="hi">🇮🇳 हिंदी</option>
         <option value="mr">🇮🇳 मराठी</option>
@@ -30,7 +33,7 @@
   <div class="container text-center">
     <h1 id="welcomeText" class="hero-title">
       <img src="../static/images/logo2.jpeg" alt="Kisan Sahayata Logo" class="hero-logo">
-     Kisan Sahayata
+      Kisan Sahayata
     </h1>
     <p class="hero-subtitle" id="heroSubtitle">Empowering Farmers with Government Schemes & Financial Support</p>
     <div class="row justify-content-center mt-4">
@@ -42,11 +45,36 @@
 <!-- STATS -->
 <div class="container stats-section">
   <div class="row g-3 text-center" id="statsRow">
-    <div class="col"><div class="stat-card"><i class="fas fa-file-alt stat-icon"></i><div class="stat-number" id="statTotal">--</div><div class="stat-label">Total Schemes</div></div></div>
-    <div class="col"><div class="stat-card"><i class="fas fa-landmark stat-icon"></i><div class="stat-number" id="statGovt">--</div><div class="stat-label">Govt Schemes</div></div></div>
-    <div class="col"><div class="stat-card"><i class="fas fa-coins stat-icon"></i><div class="stat-number" id="statFin">--</div><div class="stat-label">Financial</div></div></div>
-    <div class="col"><div class="stat-card"><i class="fas fa-shield-alt stat-icon"></i><div class="stat-number" id="statIns">--</div><div class="stat-label">Insurance</div></div></div>
-    <div class="col"><div class="stat-card"><i class="fas fa-check-circle stat-icon"></i><div class="stat-number" id="statActive">--</div><div class="stat-label">Active</div></div></div>
+    <div class="col">
+      <div class="stat-card"><i class="fas fa-file-alt stat-icon"></i>
+        <div class="stat-number" id="statTotal">--</div>
+        <div class="stat-label">Total Schemes</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="stat-card"><i class="fas fa-landmark stat-icon"></i>
+        <div class="stat-number" id="statGovt">--</div>
+        <div class="stat-label">Govt Schemes</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="stat-card"><i class="fas fa-coins stat-icon"></i>
+        <div class="stat-number" id="statFin">--</div>
+        <div class="stat-label">Financial</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="stat-card"><i class="fas fa-shield-alt stat-icon"></i>
+        <div class="stat-number" id="statIns">--</div>
+        <div class="stat-label">Insurance</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="stat-card"><i class="fas fa-check-circle stat-icon"></i>
+        <div class="stat-number" id="statActive">--</div>
+        <div class="stat-label">Active</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -90,28 +118,40 @@
     <div class="col-md-6">
       <a href="{{ url_for('govscheme') }}" class="link-card">
         <i class="fas fa-seedling link-icon text-success"></i>
-        <div class="link-content"><h5>PM-KISAN Scheme</h5><p class="text-muted mb-0">Direct income support of ₹6000/year</p></div>
+        <div class="link-content">
+          <h5>PM-KISAN Scheme</h5>
+          <p class="text-muted mb-0">Direct income support of ₹6000/year</p>
+        </div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('insurance') }}" class="link-card">
         <i class="fas fa-umbrella link-icon text-primary"></i>
-        <div class="link-content"><h5>Crop Insurance (PMFBY)</h5><p class="text-muted mb-0">Protect your crops against losses</p></div>
+        <div class="link-content">
+          <h5>Crop Insurance (PMFBY)</h5>
+          <p class="text-muted mb-0">Protect your crops against losses</p>
+        </div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('financial') }}" class="link-card">
         <i class="fas fa-credit-card link-icon text-warning"></i>
-        <div class="link-content"><h5>Kisan Credit Card</h5><p class="text-muted mb-0">Easy loans at 4% interest</p></div>
+        <div class="link-content">
+          <h5>Kisan Credit Card</h5>
+          <p class="text-muted mb-0">Easy loans at 4% interest</p>
+        </div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('govscheme') }}" class="link-card">
         <i class="fas fa-water link-icon text-info"></i>
-        <div class="link-content"><h5>Irrigation Schemes</h5><p class="text-muted mb-0">Subsidy for drip/sprinkler systems</p></div>
+        <div class="link-content">
+          <h5>Irrigation Schemes</h5>
+          <p class="text-muted mb-0">Subsidy for drip/sprinkler systems</p>
+        </div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
@@ -125,7 +165,8 @@
     <div class="col-md-4">
       <div class="card testimonial-card h-100 border-0 shadow-sm">
         <div class="card-body text-center">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="80" height="80" alt="Ram Singh">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="80" height="80"
+            alt="Ram Singh">
           <h5>Ram Singh</h5>
           <p class="text-muted">"Got PM-KISAN benefits easily through this portal"</p>
           <div class="text-warning">★★★★★</div>
@@ -136,7 +177,8 @@
     <div class="col-md-4">
       <div class="card testimonial-card h-100 border-0 shadow-sm">
         <div class="card-body text-center">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" width="80" height="80" alt="Shanta Bai">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" width="80" height="80"
+            alt="Shanta Bai">
           <h5>Shanta Bai</h5>
           <p class="text-muted">"Understood KCC loan process in my language"</p>
           <div class="text-warning">★★★★★</div>
@@ -147,7 +189,8 @@
     <div class="col-md-4">
       <div class="card testimonial-card h-100 border-0 shadow-sm">
         <div class="card-body text-center">
-          <img src="https://randomuser.me/api/portraits/men/46.jpg" class="rounded-circle mb-3" width="80" height="80" alt="Rajesh Patil">
+          <img src="https://randomuser.me/api/portraits/men/46.jpg" class="rounded-circle mb-3" width="80" height="80"
+            alt="Rajesh Patil">
           <h5>Rajesh Patil</h5>
           <p class="text-muted">"Applied for PMFBY crop insurance in Marathi, very helpful!"</p>
           <div class="text-warning">★★★★★</div>
@@ -164,7 +207,8 @@
 <div class="modal fade" id="schemeModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-      <div class="modal-header text-white rounded-top-4" style="background:linear-gradient(135deg,135deg, #6eac72, #377c39);">
+      <div class="modal-header text-white rounded-top-4"
+        style="background:linear-gradient(135deg,135deg, #6eac72, #377c39);">
         <div>
           <h5 class="modal-title fw-bold mb-0">📋 Government Schemes</h5>
           <small class="opacity-75">Find the right government scheme for you</small>
@@ -179,11 +223,13 @@
               <input type="text" class="form-control rounded-3" id="farmerName" placeholder="Enter your name">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt  text-green me-1"></i>District / Village</label>
+              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt  text-green me-1"></i>District /
+                Village</label>
               <input type="text" class="form-control rounded-3" id="farmerLocation" placeholder="e.g. Pune, Nashik">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-flag  text-green me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <label class="form-label fw-semibold"><i class="fas fa-flag  text-green me-1"></i>Scheme Type <span
+                  class="text-danger">*</span></label>
               <select class="form-select rounded-3" id="schemeType" required>
                 <option value="All">🌐 All Schemes</option>
                 <option value="Central">🇮🇳 Central Government</option>
@@ -212,7 +258,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-layer-group  text-green me-1"></i>Land Holding</label>
+              <label class="form-label fw-semibold"><i class="fas fa-layer-group  text-green me-1"></i>Land
+                Holding</label>
               <select class="form-select rounded-3" id="schemeLand">
                 <option value="">Any Land Size</option>
                 <option value="below1">Below 1 Hectare</option>
@@ -253,11 +300,13 @@
               <input type="text" class="form-control rounded-3" id="financialFarmerName" placeholder="Enter your name">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt  text-green me-1"></i>District</label>
+              <label class="form-label fw-semibold"><i
+                  class="fas fa-map-marker-alt  text-green me-1"></i>District</label>
               <input type="text" class="form-control rounded-3" id="financialLocation" placeholder="e.g. Pune, Nagpur">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-flag text-green me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <label class="form-label fw-semibold"><i class="fas fa-flag text-green me-1"></i>Scheme Type <span
+                  class="text-danger">*</span></label>
               <select class="form-select rounded-3" id="financialType" required>
                 <option value="All">🌐 All Schemes</option>
                 <option value="Central">🇮🇳 Central Government</option>
@@ -265,7 +314,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-hand-holding-usd  text-green me-1"></i>Support Type</label>
+              <label class="form-label fw-semibold"><i class="fas fa-hand-holding-usd  text-green me-1"></i>Support
+                Type</label>
               <select class="form-select rounded-3" id="financialSupportType">
                 <option value="">All Types</option>
                 <option value="loan">Crop Loan / KCC</option>
@@ -285,7 +335,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-birthday-cake  text-green me-1"></i>Age Group</label>
+              <label class="form-label fw-semibold"><i class="fas fa-birthday-cake  text-green me-1"></i>Age
+                Group</label>
               <select class="form-select rounded-3" id="financialAge">
                 <option value="">Any Age</option>
                 <option value="18to40">18 – 40 years (Pension eligible)</option>
@@ -294,7 +345,8 @@
             </div>
           </div>
           <div class="d-grid mt-4">
-            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white"
+              style="background:linear-gradient(135deg, #6eac72, #377c39);">
               🔍 Find Financial Schemes <i class="fas fa-arrow-right ms-1"></i>
             </button>
           </div>
@@ -325,11 +377,13 @@
               <input type="text" class="form-control rounded-3" id="insuranceFarmerName" placeholder="Enter your name">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt text-primary me-1"></i>District</label>
+              <label class="form-label fw-semibold"><i
+                  class="fas fa-map-marker-alt text-primary me-1"></i>District</label>
               <input type="text" class="form-control rounded-3" id="insuranceLocation" placeholder="e.g. Aurangabad">
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-flag text-primary me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <label class="form-label fw-semibold"><i class="fas fa-flag text-primary me-1"></i>Scheme Type <span
+                  class="text-danger">*</span></label>
               <select class="form-select rounded-3" id="insuranceType" required>
                 <option value="All"> All Schemes</option>
                 <option value="Central">🇮🇳 Central Government</option>
@@ -337,7 +391,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-shield-alt text-primary me-1"></i>Insurance Type</label>
+              <label class="form-label fw-semibold"><i class="fas fa-shield-alt text-primary me-1"></i>Insurance
+                Type</label>
               <select class="form-select rounded-3" id="insuranceCoverType">
                 <option value="">All Insurance Types</option>
                 <option value="crop">Crop / Fasal Bima</option>
@@ -356,7 +411,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-semibold"><i class="fas fa-exclamation-triangle text-primary me-1"></i>Risk Type</label>
+              <label class="form-label fw-semibold"><i class="fas fa-exclamation-triangle text-primary me-1"></i>Risk
+                Type</label>
               <select class="form-select rounded-3" id="insuranceRisk">
                 <option value="">Any Risk</option>
                 <option value="drought">Drought</option>
@@ -367,7 +423,8 @@
             </div>
           </div>
           <div class="d-grid mt-4">
-            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white"
+              style="background:linear-gradient(135deg, #6eac72, #377c39);">
               🔍 Find Insurance Schemes <i class="fas fa-arrow-right ms-1"></i>
             </button>
           </div>
@@ -381,52 +438,52 @@
 
 {% block scripts %}
 <script>
-// Load live stats
-fetch('/api/schemes').then(r=>r.json()).then(all=>{
-  document.getElementById('statTotal').textContent  = all.length + '+';
-  document.getElementById('statActive').textContent = all.length + '+';
-  document.getElementById('statGovt').textContent   = all.filter(s=>s.category==='govt').length + '+';
-  document.getElementById('statFin').textContent    = all.filter(s=>s.category==='financial').length + '+';
-  document.getElementById('statIns').textContent    = all.filter(s=>s.category==='insurance').length + '+';
-});
+  // Load live stats
+  fetch('/api/schemes').then(r => r.json()).then(all => {
+    document.getElementById('statTotal').textContent = all.length + '+';
+    document.getElementById('statActive').textContent = all.length + '+';
+    document.getElementById('statGovt').textContent = all.filter(s => s.category === 'govt').length + '+';
+    document.getElementById('statFin').textContent = all.filter(s => s.category === 'financial').length + '+';
+    document.getElementById('statIns').textContent = all.filter(s => s.category === 'insurance').length + '+';
+  });
 
-// ── GOVERNMENT SCHEME FORM ──
-document.getElementById('schemeForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const params = new URLSearchParams();
-  params.set('type',       document.getElementById('schemeType').value);
-  params.set('farmerType', document.getElementById('schemefarmerType').value);
-  params.set('cropNeed',   document.getElementById('schemeCropNeed').value);
-  params.set('land',       document.getElementById('schemeLand').value);
-  const name = document.getElementById('farmerName').value.trim();
-  if (name) params.set('farmer', name);
-  window.location.href = '/govscheme?' + params.toString();
-});
+  // ── GOVERNMENT SCHEME FORM ──
+  document.getElementById('schemeForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    params.set('type', document.getElementById('schemeType').value);
+    params.set('farmerType', document.getElementById('schemefarmerType').value);
+    params.set('cropNeed', document.getElementById('schemeCropNeed').value);
+    params.set('land', document.getElementById('schemeLand').value);
+    const name = document.getElementById('farmerName').value.trim();
+    if (name) params.set('farmer', name);
+    window.location.href = '/govscheme?' + params.toString();
+  });
 
-// ── FINANCIAL FORM ──
-document.getElementById('financialForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const params = new URLSearchParams();
-  params.set('type',        document.getElementById('financialType').value);
-  params.set('supportType', document.getElementById('financialSupportType').value);
-  params.set('farmerType',  document.getElementById('financialFarmerType').value);
-  params.set('age',         document.getElementById('financialAge').value);
-  const name = document.getElementById('financialFarmerName').value.trim();
-  if (name) params.set('farmer', name);
-  window.location.href = '/financial?' + params.toString();
-});
+  // ── FINANCIAL FORM ──
+  document.getElementById('financialForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    params.set('type', document.getElementById('financialType').value);
+    params.set('supportType', document.getElementById('financialSupportType').value);
+    params.set('farmerType', document.getElementById('financialFarmerType').value);
+    params.set('age', document.getElementById('financialAge').value);
+    const name = document.getElementById('financialFarmerName').value.trim();
+    if (name) params.set('farmer', name);
+    window.location.href = '/financial?' + params.toString();
+  });
 
-// ── INSURANCE FORM ──
-document.getElementById('insuranceForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const params = new URLSearchParams();
-  params.set('type',      document.getElementById('insuranceType').value);
-  params.set('coverType', document.getElementById('insuranceCoverType').value);
-  params.set('season',    document.getElementById('insuranceSeason').value);
-  params.set('risk',      document.getElementById('insuranceRisk').value);
-  const name = document.getElementById('insuranceFarmerName').value.trim();
-  if (name) params.set('farmer', name);
-  window.location.href = '/insurance?' + params.toString();
-});
+  // ── INSURANCE FORM ──
+  document.getElementById('insuranceForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    params.set('type', document.getElementById('insuranceType').value);
+    params.set('coverType', document.getElementById('insuranceCoverType').value);
+    params.set('season', document.getElementById('insuranceSeason').value);
+    params.set('risk', document.getElementById('insuranceRisk').value);
+    const name = document.getElementById('insuranceFarmerName').value.trim();
+    if (name) params.set('farmer', name);
+    window.location.href = '/insurance?' + params.toString();
+  });
 </script>
 {% endblock %}

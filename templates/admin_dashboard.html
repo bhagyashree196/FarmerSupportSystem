@@ -1,339 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard | Kisan Sahayata</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    :root { --green-dark:#1b5e20; --green:#2e7d32; --green-light:#66bb6a; }
-    body { background:#f0f4f0; font-family:'Segoe UI',sans-serif; }
-    .sidebar { width:260px; min-height:100vh; background:linear-gradient(180deg,#1b5e20,#2e7d32); position:fixed; top:0; left:0; z-index:100; padding-top:20px; }
-    .sidebar-logo { padding:20px; text-align:center; border-bottom:1px solid rgba(255,255,255,0.15); }
-    .sidebar-logo h5 { color:white; font-weight:700; margin:8px 0 0; }
-    .sidebar-nav { padding:15px 0; }
-    .sidebar-nav a { display:flex; align-items:center; gap:10px; padding:12px 20px; color:rgba(255,255,255,0.85); text-decoration:none; transition:all 0.2s; font-size:0.95rem; }
-    .sidebar-nav a:hover, .sidebar-nav a.active { background:rgba(255,255,255,0.15); color:white; padding-left:28px; }
-    .sidebar-nav a i { width:20px; }
-    .main-content { margin-left:260px; padding:25px; }
-    .topbar { background:white; border-radius:12px; padding:15px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.06); }
-    .stat-card-admin { background:white; border-radius:16px; padding:20px; box-shadow:0 2px 10px rgba(0,0,0,0.06); border-left:5px solid; transition:transform 0.2s; }
-    .stat-card-admin:hover { transform:translateY(-3px); }
-    .stat-card-admin.total { border-color:#2e7d32; }
-    .stat-card-admin.active { border-color:#4caf50; }
-    .stat-card-admin.inactive { border-color:#ff9800; }
-    .stat-card-admin.govt { border-color:#1976d2; }
-    .stat-card-admin.fin { border-color:#7b1fa2; }
-    .stat-card-admin.ins { border-color:#c62828; }
-    .stat-num { font-size:2rem; font-weight:800; }
-    .stat-lbl { color:#666; font-size:0.85rem; }
-    .card-main { background:white; border-radius:16px; box-shadow:0 2px 10px rgba(0,0,0,0.06); overflow:hidden; }
-    .card-main-header { padding:16px 20px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e9ecef; }
-    .card-main-header h5 { margin:0; font-weight:700; }
-    .badge-govt { background:#e3f2fd; color:#1976d2; }
-    .badge-financial { background:#f3e5f5; color:#7b1fa2; }
-    .badge-insurance { background:#fce4ec; color:#c62828; }
-    .badge-central { background:#e8f5e9; color:#2e7d32; }
-    .badge-maharashtra { background:#fff3e0; color:#e65100; }
-    table { font-size:0.88rem; }
-    .table th { background:#f8f9fa; font-weight:700; color:#555; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; }
-    .btn-action { padding:5px 10px; border-radius:20px; font-size:0.8rem; border:none; cursor:pointer; transition:all 0.2s; }
-    .btn-edit { background:#e3f2fd; color:#1976d2; }
-    .btn-edit:hover { background:#1976d2; color:white; }
-    .btn-delete { background:#fce4ec; color:#c62828; }
-    .btn-delete:hover { background:#c62828; color:white; }
-    .btn-toggle-active { background:#e8f5e9; color:#2e7d32; }
-    .btn-toggle-inactive { background:#fff3e0; color:#e65100; }
-    .search-input { border-radius:30px; border:1px solid #dee2e6; padding:8px 16px; font-size:0.9rem; }
-    .search-input:focus { border-color:#2e7d32; outline:none; box-shadow:0 0 0 3px rgba(46,125,50,0.1); }
-    .filter-tabs { display:flex; gap:5px; flex-wrap:wrap; }
-    .filter-tab { padding:5px 14px; border-radius:20px; border:1px solid #dee2e6; background:white; cursor:pointer; font-size:0.85rem; transition:all 0.2s; }
-    .filter-tab.active, .filter-tab:hover { background:#2e7d32; color:white; border-color:#2e7d32; }
-    .toast-container { position:fixed; top:20px; right:20px; z-index:9999; }
-    @media(max-width:768px) { .sidebar{display:none;} .main-content{margin-left:0;} }
+    :root {
+      --green-dark: #1b5e20;
+      --green: #2e7d32;
+      --green-light: #66bb6a;
+    }
+
+    body {
+      background: #f0f4f0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .sidebar {
+      width: 260px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #1b5e20, #2e7d32);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      padding-top: 20px;
+    }
+
+    .sidebar-logo {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar-logo h5 {
+      color: white;
+      font-weight: 700;
+      margin: 8px 0 0;
+    }
+
+    .sidebar-nav {
+      padding: 15px 0;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      padding-left: 28px;
+    }
+
+    .sidebar-nav a i {
+      width: 20px;
+    }
+
+    .main-content {
+      margin-left: 260px;
+      padding: 25px;
+    }
+
+    .topbar {
+      background: white;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .stat-card-admin {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid;
+      transition: transform 0.2s;
+    }
+
+    .stat-card-admin:hover {
+      transform: translateY(-3px);
+    }
+
+    .stat-card-admin.total {
+      border-color: #2e7d32;
+    }
+
+    .stat-card-admin.active {
+      border-color: #4caf50;
+    }
+
+    .stat-card-admin.inactive {
+      border-color: #ff9800;
+    }
+
+    .stat-card-admin.govt {
+      border-color: #1976d2;
+    }
+
+    .stat-card-admin.fin {
+      border-color: #7b1fa2;
+    }
+
+    .stat-card-admin.ins {
+      border-color: #c62828;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .stat-lbl {
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .card-main {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .card-main-header {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .card-main-header h5 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .badge-govt {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .badge-financial {
+      background: #f3e5f5;
+      color: #7b1fa2;
+    }
+
+    .badge-insurance {
+      background: #fce4ec;
+      color: #c62828;
+    }
+
+    .badge-central {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .badge-maharashtra {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    table {
+      font-size: 0.88rem;
+    }
+
+    .table th {
+      background: #f8f9fa;
+      font-weight: 700;
+      color: #555;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-action {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-edit {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .btn-edit:hover {
+      background: #1976d2;
+      color: white;
+    }
+
+    .btn-delete {
+      background: #fce4ec;
+      color: #c62828;
+    }
+
+    .btn-delete:hover {
+      background: #c62828;
+      color: white;
+    }
+
+    .btn-toggle-active {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .btn-toggle-inactive {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .search-input {
+      border-radius: 30px;
+      border: 1px solid #dee2e6;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    .search-input:focus {
+      border-color: #2e7d32;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid #dee2e6;
+      background: white;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: #2e7d32;
+      color: white;
+      border-color: #2e7d32;
+    }
+
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    @media(max-width:768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <div class="sidebar-logo">
-    <div style="font-size:2rem;">🌾</div>
-    <h5>Kisan Sahayata</h5>
-    <small style="color:rgba(255,255,255,0.6);">Admin Panel</small>
-  </div>
-  <nav class="sidebar-nav">
-    <a href="{{ url_for('admin_dashboard') }}" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-    <a href="{{ url_for('admin_add_scheme') }}"><i class="fas fa-plus-circle"></i>Add Scheme</a>
-    <a href="{{ url_for('govscheme') }}" target="_blank"><i class="fas fa-eye"></i>View Farmer Portal</a>
-    <hr style="border-color:rgba(255,255,255,0.2);margin:10px 20px;">
-    <a href="{{ url_for('admin_logout') }}" style="color:rgba(255,100,100,0.9);">
-      <i class="fas fa-sign-out-alt"></i>Logout
-    </a>
-  </nav>
-</div>
-
-<!-- Main Content -->
-<div class="main-content">
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <div>
-      <h4 class="mb-0 fw-bold">📊 Admin Dashboard</h4>
-      <small class="text-muted">Manage all schemes, insurance & financial programs</small>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div style="font-size:2rem;">🌾</div>
+      <h5>Kisan Sahayata</h5>
+      <small style="color:rgba(255,255,255,0.6);">Admin Panel</small>
     </div>
-    <div class="d-flex align-items-center gap-3">
-      <span class="text-muted small"><i class="fas fa-user me-1"></i>Administrator</span>
-      <a href="{{ url_for('admin_add_scheme') }}" class="btn btn-success btn-sm rounded-pill fw-bold">
-        <i class="fas fa-plus me-1"></i>Add Scheme
+    <nav class="sidebar-nav">
+      <a href="{{ url_for('admin_dashboard') }}" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+      <a href="{{ url_for('admin_add_scheme') }}"><i class="fas fa-plus-circle"></i>Add Scheme</a>
+      <a href="{{ url_for('govscheme') }}" target="_blank"><i class="fas fa-eye"></i>View Farmer Portal</a>
+      <hr style="border-color:rgba(255,255,255,0.2);margin:10px 20px;">
+      <a href="{{ url_for('admin_logout') }}" style="color:rgba(255,100,100,0.9);">
+        <i class="fas fa-sign-out-alt"></i>Logout
       </a>
-    </div>
+    </nav>
   </div>
 
-  <!-- Flash messages -->
-  {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div>
+        <h4 class="mb-0 fw-bold">📊 Admin Dashboard</h4>
+        <small class="text-muted">Manage all schemes, insurance & financial programs</small>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-muted small"><i class="fas fa-user me-1"></i>Administrator</span>
+        <a href="{{ url_for('admin_add_scheme') }}" class="btn btn-success btn-sm rounded-pill fw-bold">
+          <i class="fas fa-plus me-1"></i>Add Scheme
+        </a>
+      </div>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, message in messages %}
-      <div class="alert alert-{{ 'success' if category=='success' else 'danger' }} alert-dismissible fade show rounded-3" role="alert">
-        {{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
+    <div class="alert alert-{{ 'success' if category=='success' else 'danger' }} alert-dismissible fade show rounded-3"
+      role="alert">
+      {{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
     {% endfor %}
-  {% endwith %}
+    {% endwith %}
 
-  <!-- Stats Cards -->
-  <div class="row g-3 mb-4">
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin total">
-        <div class="stat-num text-success">{{ stats.total }}</div>
-        <div class="stat-lbl">Total Schemes</div>
-      </div>
-    </div>
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin active">
-        <div class="stat-num" style="color:#4caf50;">{{ stats.active }}</div>
-        <div class="stat-lbl">Active</div>
-      </div>
-    </div>
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin inactive">
-        <div class="stat-num" style="color:#ff9800;">{{ stats.inactive }}</div>
-        <div class="stat-lbl">Inactive</div>
-      </div>
-    </div>
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin govt">
-        <div class="stat-num" style="color:#1976d2;">{{ stats.govt }}</div>
-        <div class="stat-lbl">Govt</div>
-      </div>
-    </div>
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin fin">
-        <div class="stat-num" style="color:#7b1fa2;">{{ stats.financial }}</div>
-        <div class="stat-lbl">Financial</div>
-      </div>
-    </div>
-    <div class="col-md-2 col-6">
-      <div class="stat-card-admin ins">
-        <div class="stat-num" style="color:#c62828;">{{ stats.insurance }}</div>
-        <div class="stat-lbl">Insurance</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Schemes Table -->
-  <div class="card-main">
-    <div class="card-main-header">
-      <h5><i class="fas fa-list me-2 text-success"></i>All Schemes</h5>
-      <div class="d-flex gap-2 align-items-center flex-wrap">
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="govt">Govt</button>
-          <button class="filter-tab" data-filter="financial">Financial</button>
-          <button class="filter-tab" data-filter="insurance">Insurance</button>
-          <button class="filter-tab" data-filter="active">Active</button>
-          <button class="filter-tab" data-filter="inactive">Inactive</button>
+    <!-- Stats Cards -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin total">
+          <div class="stat-num text-success">{{ stats.total }}</div>
+          <div class="stat-lbl">Total Schemes</div>
         </div>
-        <input type="text" id="tableSearch" class="search-input" placeholder="🔍 Search schemes...">
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin active">
+          <div class="stat-num" style="color:#4caf50;">{{ stats.active }}</div>
+          <div class="stat-lbl">Active</div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin inactive">
+          <div class="stat-num" style="color:#ff9800;">{{ stats.inactive }}</div>
+          <div class="stat-lbl">Inactive</div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin govt">
+          <div class="stat-num" style="color:#1976d2;">{{ stats.govt }}</div>
+          <div class="stat-lbl">Govt</div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin fin">
+          <div class="stat-num" style="color:#7b1fa2;">{{ stats.financial }}</div>
+          <div class="stat-lbl">Financial</div>
+        </div>
+      </div>
+      <div class="col-md-2 col-6">
+        <div class="stat-card-admin ins">
+          <div class="stat-num" style="color:#c62828;">{{ stats.insurance }}</div>
+          <div class="stat-lbl">Insurance</div>
+        </div>
       </div>
     </div>
 
-    <div class="table-responsive">
-      <table class="table table-hover mb-0" id="schemesTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Scheme Name</th>
-            <th>Category</th>
-            <th>Type</th>
-            <th>Status</th>
-            <th>Deadline</th>
-            <th>Added</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for scheme in schemes %}
-          <tr data-category="{{ scheme.category }}" data-status="{{ scheme.status }}" id="row-{{ scheme.id }}">
-            <td class="text-muted">{{ loop.index }}</td>
-            <td>
-              <div class="fw-semibold">{{ scheme.title[:45] }}{% if scheme.title|length > 45 %}...{% endif %}</div>
-            </td>
-            <td>
-              <span class="badge badge-{{ scheme.category }} px-2 py-1 rounded-pill">
-                {{ scheme.category.upper() }}
-              </span>
-            </td>
-            <td>
-              <span class="badge badge-{{ scheme.scheme_type.lower() }} px-2 py-1 rounded-pill">
-                {{ scheme.scheme_type }}
-              </span>
-            </td>
-            <td>
-              <span class="badge {{ 'bg-success' if scheme.status == 'active' else 'bg-secondary' }} px-2 py-1 rounded-pill status-badge-{{ scheme.id }}">
-                {{ scheme.status.capitalize() }}
-              </span>
-            </td>
-            <td class="text-muted small">{{ scheme.deadline or 'Ongoing' }}</td>
-            <td class="text-muted small">{{ scheme.created_at.strftime('%d %b %Y') }}</td>
-            <td>
-              <div class="d-flex gap-1">
-                <a href="{{ url_for('admin_edit_scheme', sid=scheme.id) }}" class="btn-action btn-edit" title="Edit">
-                  <i class="fas fa-edit"></i>
-                </a>
-                <button class="btn-action {{ 'btn-toggle-active' if scheme.status == 'active' else 'btn-toggle-inactive' }}"
-                        onclick="toggleScheme({{ scheme.id }})" id="toggle-{{ scheme.id }}" title="Toggle Status">
-                  <i class="fas fa-{{ 'eye-slash' if scheme.status == 'active' else 'eye' }}"></i>
-                </button>
-                <button class="btn-action btn-delete" onclick="deleteScheme({{ scheme.id }}, '{{ scheme.title[:30] }}')" title="Delete">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+    <!-- Schemes Table -->
+    <div class="card-main">
+      <div class="card-main-header">
+        <h5><i class="fas fa-list me-2 text-success"></i>All Schemes</h5>
+        <div class="d-flex gap-2 align-items-center flex-wrap">
+          <!-- Filter Tabs -->
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="govt">Govt</button>
+            <button class="filter-tab" data-filter="financial">Financial</button>
+            <button class="filter-tab" data-filter="insurance">Insurance</button>
+            <button class="filter-tab" data-filter="active">Active</button>
+            <button class="filter-tab" data-filter="inactive">Inactive</button>
+          </div>
+          <input type="text" id="tableSearch" class="search-input" placeholder="🔍 Search schemes...">
+        </div>
+      </div>
 
-    {% if not schemes %}
-    <div class="text-center py-5 text-muted">
-      <i class="fas fa-inbox fa-3x mb-3"></i>
-      <p>No schemes found. <a href="{{ url_for('admin_add_scheme') }}">Add your first scheme</a></p>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0" id="schemesTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Scheme Name</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Deadline</th>
+              <th>Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for scheme in schemes %}
+            <tr data-category="{{ scheme.category }}" data-status="{{ scheme.status }}" id="row-{{ scheme.id }}">
+              <td class="text-muted">{{ loop.index }}</td>
+              <td>
+                <div class="fw-semibold">{{ scheme.title[:45] }}{% if scheme.title|length > 45 %}...{% endif %}</div>
+              </td>
+              <td>
+                <span class="badge badge-{{ scheme.category }} px-2 py-1 rounded-pill">
+                  {{ scheme.category.upper() }}
+                </span>
+              </td>
+              <td>
+                <span class="badge badge-{{ scheme.scheme_type.lower() }} px-2 py-1 rounded-pill">
+                  {{ scheme.scheme_type }}
+                </span>
+              </td>
+              <td>
+                <span
+                  class="badge {{ 'bg-success' if scheme.status == 'active' else 'bg-secondary' }} px-2 py-1 rounded-pill status-badge-{{ scheme.id }}">
+                  {{ scheme.status.capitalize() }}
+                </span>
+              </td>
+              <td class="text-muted small">{{ scheme.deadline or 'Ongoing' }}</td>
+              <td class="text-muted small">{{ scheme.created_at.strftime('%d %b %Y') }}</td>
+              <td>
+                <div class="d-flex gap-1">
+                  <a href="{{ url_for('admin_edit_scheme', sid=scheme.id) }}" class="btn-action btn-edit" title="Edit">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <button
+                    class="btn-action {{ 'btn-toggle-active' if scheme.status == 'active' else 'btn-toggle-inactive' }}"
+                    onclick="toggleScheme({{ scheme.id }})" id="toggle-{{ scheme.id }}" title="Toggle Status">
+                    <i class="fas fa-{{ 'eye-slash' if scheme.status == 'active' else 'eye' }}"></i>
+                  </button>
+                  <button class="btn-action btn-delete"
+                    onclick="deleteScheme({{ scheme.id }}, '{{ scheme.title[:30] }}')" title="Delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      {% if not schemes %}
+      <div class="text-center py-5 text-muted">
+        <i class="fas fa-inbox fa-3x mb-3"></i>
+        <p>No schemes found. <a href="{{ url_for('admin_add_scheme') }}">Add your first scheme</a></p>
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
   </div>
-</div>
 
-<!-- Toast Container -->
-<div class="toast-container">
-  <div id="adminToast" class="toast align-items-center border-0" role="alert">
-    <div class="d-flex">
-      <div class="toast-body fw-semibold" id="toastMsg"></div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-    </div>
-  </div>
-</div>
-
-<!-- Confirm Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 rounded-4 shadow-lg">
-      <div class="modal-header bg-danger text-white rounded-top-4">
-        <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete</h5>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body p-4 text-center">
-        <p class="mb-1">Are you sure you want to delete:</p>
-        <strong id="deleteSchemeTitle" class="text-danger"></strong>
-        <p class="mt-2 text-muted small">This action cannot be undone.</p>
-      </div>
-      <div class="modal-footer border-0">
-        <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-danger rounded-pill fw-bold" id="confirmDeleteBtn">
-          <i class="fas fa-trash me-1"></i>Delete
-        </button>
+  <!-- Toast Container -->
+  <div class="toast-container">
+    <div id="adminToast" class="toast align-items-center border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body fw-semibold" id="toastMsg"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
       </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-let deleteId = null;
+  <!-- Confirm Delete Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg">
+        <div class="modal-header bg-danger text-white rounded-top-4">
+          <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <p class="mb-1">Are you sure you want to delete:</p>
+          <strong id="deleteSchemeTitle" class="text-danger"></strong>
+          <p class="mt-2 text-muted small">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger rounded-pill fw-bold" id="confirmDeleteBtn">
+            <i class="fas fa-trash me-1"></i>Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-function showToast(msg, type='success') {
-  const t = document.getElementById('adminToast');
-  t.className = `toast align-items-center text-white border-0 bg-${type}`;
-  document.getElementById('toastMsg').textContent = msg;
-  new bootstrap.Toast(t, {delay:3000}).show();
-}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let deleteId = null;
 
-function deleteScheme(id, title) {
-  deleteId = id;
-  document.getElementById('deleteSchemeTitle').textContent = title;
-  new bootstrap.Modal(document.getElementById('deleteModal')).show();
-}
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('adminToast');
+      t.className = `toast align-items-center text-white border-0 bg-${type}`;
+      document.getElementById('toastMsg').textContent = msg;
+      new bootstrap.Toast(t, { delay: 3000 }).show();
+    }
 
-document.getElementById('confirmDeleteBtn').addEventListener('click', function(){
-  if (!deleteId) return;
-  fetch(`/admin/scheme/delete/${deleteId}`, {method:'POST'})
-    .then(r=>r.json()).then(data=>{
-      if(data.success) {
-        document.getElementById('row-'+deleteId).remove();
-        bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
-        showToast(data.message);
-      }
+    function deleteScheme(id, title) {
+      deleteId = id;
+      document.getElementById('deleteSchemeTitle').textContent = title;
+      new bootstrap.Modal(document.getElementById('deleteModal')).show();
+    }
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+      if (!deleteId) return;
+      fetch(`/admin/scheme/delete/${deleteId}`, { method: 'POST' })
+        .then(r => r.json()).then(data => {
+          if (data.success) {
+            document.getElementById('row-' + deleteId).remove();
+            bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+            showToast(data.message);
+          }
+        });
     });
-});
 
-function toggleScheme(id) {
-  fetch(`/admin/scheme/toggle/${id}`, {method:'POST'})
-    .then(r=>r.json()).then(data=>{
-      if(data.success) {
-        const badge = document.querySelector(`.status-badge-${id}`);
-        const btn = document.getElementById(`toggle-${id}`);
-        const row = document.getElementById(`row-${id}`);
-        if(data.status === 'active') {
-          badge.className = `badge bg-success px-2 py-1 rounded-pill status-badge-${id}`;
-          badge.textContent = 'Active';
-          btn.className = 'btn-action btn-toggle-active';
-          btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
-          row.dataset.status = 'active';
-        } else {
-          badge.className = `badge bg-secondary px-2 py-1 rounded-pill status-badge-${id}`;
-          badge.textContent = 'Inactive';
-          btn.className = 'btn-action btn-toggle-inactive';
-          btn.innerHTML = '<i class="fas fa-eye"></i>';
-          row.dataset.status = 'inactive';
-        }
-        showToast(`Status changed to ${data.status}`);
-      }
+    function toggleScheme(id) {
+      fetch(`/admin/scheme/toggle/${id}`, { method: 'POST' })
+        .then(r => r.json()).then(data => {
+          if (data.success) {
+            const badge = document.querySelector(`.status-badge-${id}`);
+            const btn = document.getElementById(`toggle-${id}`);
+            const row = document.getElementById(`row-${id}`);
+            if (data.status === 'active') {
+              badge.className = `badge bg-success px-2 py-1 rounded-pill status-badge-${id}`;
+              badge.textContent = 'Active';
+              btn.className = 'btn-action btn-toggle-active';
+              btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+              row.dataset.status = 'active';
+            } else {
+              badge.className = `badge bg-secondary px-2 py-1 rounded-pill status-badge-${id}`;
+              badge.textContent = 'Inactive';
+              btn.className = 'btn-action btn-toggle-inactive';
+              btn.innerHTML = '<i class="fas fa-eye"></i>';
+              row.dataset.status = 'inactive';
+            }
+            showToast(`Status changed to ${data.status}`);
+          }
+        });
+    }
+
+    // Filter tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('#schemesTable tbody tr').forEach(row => {
+          if (filter === 'all') { row.style.display = ''; return; }
+          const cat = row.dataset.category;
+          const stat = row.dataset.status;
+          row.style.display = (cat === filter || stat === filter) ? '' : 'none';
+        });
+      });
     });
-}
 
-// Filter tabs
-document.querySelectorAll('.filter-tab').forEach(tab => {
-  tab.addEventListener('click', function(){
-    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
-    this.classList.add('active');
-    const filter = this.dataset.filter;
-    document.querySelectorAll('#schemesTable tbody tr').forEach(row => {
-      if(filter === 'all') { row.style.display=''; return; }
-      const cat = row.dataset.category;
-      const stat = row.dataset.status;
-      row.style.display = (cat===filter || stat===filter) ? '' : 'none';
+    // Table search
+    document.getElementById('tableSearch').addEventListener('input', function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('#schemesTable tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
     });
-  });
-});
-
-// Table search
-document.getElementById('tableSearch').addEventListener('input', function(){
-  const q = this.value.toLowerCase();
-  document.querySelectorAll('#schemesTable tbody tr').forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
-});
-</script>
+  </script>
 </body>
+
 </html>

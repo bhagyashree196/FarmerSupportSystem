@@ -28,117 +28,117 @@
 
 {% block scripts %}
 <script>
-const params      = new URLSearchParams(window.location.search);
-let currentType   = params.get('type')      || 'All';
-let farmerType    = params.get('farmerType') || '';
-let cropNeed      = params.get('cropNeed')   || '';
-let land          = params.get('land')       || '';
-let farmerName    = params.get('farmer')     || '';
+  const params = new URLSearchParams(window.location.search);
+  let currentType = params.get('type') || 'All';
+  let farmerType = params.get('farmerType') || '';
+  let cropNeed = params.get('cropNeed') || '';
+  let land = params.get('land') || '';
+  let farmerName = params.get('farmer') || '';
 
-// Highlight active filter btn
-document.querySelectorAll('#typeFilterBar .filter-btn').forEach(btn => {
-  if (btn.dataset.type === currentType) btn.classList.add('active');
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('#typeFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    currentType = this.dataset.type;
-    farmerType = ''; cropNeed = ''; land = '';
-    document.getElementById('activeFilters').style.display = 'none';
-    loadSchemes();
+  // Highlight active filter btn
+  document.querySelectorAll('#typeFilterBar .filter-btn').forEach(btn => {
+    if (btn.dataset.type === currentType) btn.classList.add('active');
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#typeFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentType = this.dataset.type;
+      farmerType = ''; cropNeed = ''; land = '';
+      document.getElementById('activeFilters').style.display = 'none';
+      loadSchemes();
+    });
   });
-});
 
-// Show active filter pills from modal input
-function showFilterPills() {
-  const pills = [];
-  if (farmerName)  pills.push(`👤 ${farmerName}`);
-  if (currentType && currentType !== 'All') pills.push(`🏛️ ${currentType}`);
-  if (farmerType)  pills.push(`🚜 ${farmerType} farmer`);
-  if (cropNeed)    pills.push(`🌾 ${cropNeed}`);
-  if (land)        pills.push(`📐 Land: ${land}`);
+  // Show active filter pills from modal input
+  function showFilterPills() {
+    const pills = [];
+    if (farmerName) pills.push(`👤 ${farmerName}`);
+    if (currentType && currentType !== 'All') pills.push(`🏛️ ${currentType}`);
+    if (farmerType) pills.push(`🚜 ${farmerType} farmer`);
+    if (cropNeed) pills.push(`🌾 ${cropNeed}`);
+    if (land) pills.push(`📐 Land: ${land}`);
 
-  const box = document.getElementById('activeFilters');
-  if (pills.length > 0) {
-    box.innerHTML = `<span class="text-muted me-2">Filters:</span>` +
-      pills.map(p => `<span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 me-1">${p}</span>`).join('') +
-      `<a href="/govscheme" class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 ms-2 text-decoration-none">✖ Clear</a>`;
-    box.style.display = 'block';
+    const box = document.getElementById('activeFilters');
+    if (pills.length > 0) {
+      box.innerHTML = `<span class="text-muted me-2">Filters:</span>` +
+        pills.map(p => `<span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 me-1">${p}</span>`).join('') +
+        `<a href="/govscheme" class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 ms-2 text-decoration-none">✖ Clear</a>`;
+      box.style.display = 'block';
+    }
   }
-}
 
-// Keyword maps for client-side filtering
-const farmerTypeKeywords = {
-  small:       ['small','marginal','2 hectare','less than 2'],
-  marginal:    ['marginal','1 hectare','less than 1'],
-  large:       ['large','all farmer'],
-  sharecropper:['sharecropper','tenant','all farmer']
-};
-const cropNeedKeywords = {
-  kharif:      ['kharif','rice','cotton','soybean'],
-  rabi:        ['rabi','wheat','gram'],
-  irrigation:  ['irrigation','drip','sprinkler','water','micro'],
-  income:      ['income','support','6000','direct benefit'],
-  loan_waiver: ['waiver','loan waiver','karj mafi']
-};
-const landKeywords = {
-  below1:  ['marginal','less than 1','below 1'],
-  '1to2':  ['small','2 hectare','marginal','all farmer'],
-  above2:  ['all farmer','large']
-};
+  // Keyword maps for client-side filtering
+  const farmerTypeKeywords = {
+    small: ['small', 'marginal', '2 hectare', 'less than 2'],
+    marginal: ['marginal', '1 hectare', 'less than 1'],
+    large: ['large', 'all farmer'],
+    sharecropper: ['sharecropper', 'tenant', 'all farmer']
+  };
+  const cropNeedKeywords = {
+    kharif: ['kharif', 'rice', 'cotton', 'soybean'],
+    rabi: ['rabi', 'wheat', 'gram'],
+    irrigation: ['irrigation', 'drip', 'sprinkler', 'water', 'micro'],
+    income: ['income', 'support', '6000', 'direct benefit'],
+    loan_waiver: ['waiver', 'loan waiver', 'karj mafi']
+  };
+  const landKeywords = {
+    below1: ['marginal', 'less than 1', 'below 1'],
+    '1to2': ['small', '2 hectare', 'marginal', 'all farmer'],
+    above2: ['all farmer', 'large']
+  };
 
-function clientFilter(schemes) {
-  let result = schemes;
-  if (farmerType && farmerTypeKeywords[farmerType]) {
-    const kws = farmerTypeKeywords[farmerType];
-    result = result.filter(s => {
-      const text = `${s.eligibility} ${s.description} ${s.tags}`.toLowerCase();
-      return kws.some(k => text.includes(k));
-    });
+  function clientFilter(schemes) {
+    let result = schemes;
+    if (farmerType && farmerTypeKeywords[farmerType]) {
+      const kws = farmerTypeKeywords[farmerType];
+      result = result.filter(s => {
+        const text = `${s.eligibility} ${s.description} ${s.tags}`.toLowerCase();
+        return kws.some(k => text.includes(k));
+      });
+    }
+    if (cropNeed && cropNeedKeywords[cropNeed]) {
+      const kws = cropNeedKeywords[cropNeed];
+      result = result.filter(s => {
+        const text = `${s.title} ${s.description} ${s.tags} ${s.benefits}`.toLowerCase();
+        return kws.some(k => text.includes(k));
+      });
+    }
+    if (land && landKeywords[land]) {
+      const kws = landKeywords[land];
+      result = result.filter(s => {
+        const text = `${s.eligibility} ${s.description}`.toLowerCase();
+        return kws.some(k => text.includes(k));
+      });
+    }
+    return result;
   }
-  if (cropNeed && cropNeedKeywords[cropNeed]) {
-    const kws = cropNeedKeywords[cropNeed];
-    result = result.filter(s => {
-      const text = `${s.title} ${s.description} ${s.tags} ${s.benefits}`.toLowerCase();
-      return kws.some(k => text.includes(k));
-    });
-  }
-  if (land && landKeywords[land]) {
-    const kws = landKeywords[land];
-    result = result.filter(s => {
-      const text = `${s.eligibility} ${s.description}`.toLowerCase();
-      return kws.some(k => text.includes(k));
-    });
-  }
-  return result;
-}
 
-function loadSchemes() {
-  const container = document.getElementById('schemeContainer');
-  container.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div><p class="mt-2 text-muted">Loading...</p></div>';
+  function loadSchemes() {
+    const container = document.getElementById('schemeContainer');
+    container.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div><p class="mt-2 text-muted">Loading...</p></div>';
 
-  let url = '/api/schemes?category=govt';
-  if (currentType && currentType !== 'All') url += '&type=' + currentType;
+    let url = '/api/schemes?category=govt';
+    if (currentType && currentType !== 'All') url += '&type=' + currentType;
 
-  fetch(url).then(r => r.json()).then(schemes => {
-    let filtered = clientFilter(schemes);
+    fetch(url).then(r => r.json()).then(schemes => {
+      let filtered = clientFilter(schemes);
 
-    const infoEl = document.getElementById('resultsInfo');
-    infoEl.style.display = 'block';
-    infoEl.innerHTML = filtered.length === schemes.length
-      ? `Showing all <strong>${filtered.length}</strong> government schemes`
-      : `Showing <strong>${filtered.length}</strong> of ${schemes.length} schemes matching your criteria`;
+      const infoEl = document.getElementById('resultsInfo');
+      infoEl.style.display = 'block';
+      infoEl.innerHTML = filtered.length === schemes.length
+        ? `Showing all <strong>${filtered.length}</strong> government schemes`
+        : `Showing <strong>${filtered.length}</strong> of ${schemes.length} schemes matching your criteria`;
 
-    if (!filtered.length) {
-      container.innerHTML = `
+      if (!filtered.length) {
+        container.innerHTML = `
         <div class="text-center py-5">
           <div style="font-size:3rem;">🔍</div>
           <h4 class="text-muted mt-3">No schemes matched your filters</h4>
           <p class="text-muted">Try different criteria or <a href="/govscheme">view all schemes</a></p>
         </div>`;
-      return;
-    }
+        return;
+      }
 
-    container.innerHTML = filtered.map(s => `
+      container.innerHTML = filtered.map(s => `
       <div class="scheme-card-modern">
         <span class="badge ${s.scheme_type === 'Central' ? 'bg-primary' : 'bg-success'} mb-2">${s.scheme_type}</span>
         <span class="badge bg-success ms-1 mb-2">${s.status === 'active' ? 'Active' : 'Inactive'}</span>
@@ -151,12 +151,12 @@ function loadSchemes() {
           <a href="/scheme_detail?id=${s.id}" class="btn-details">View Details</a>
         </div>
       </div>`).join('');
-  }).catch(() => {
-    container.innerHTML = '<div class="alert alert-danger">Failed to load schemes. Please try again.</div>';
-  });
-}
+    }).catch(() => {
+      container.innerHTML = '<div class="alert alert-danger">Failed to load schemes. Please try again.</div>';
+    });
+  }
 
-showFilterPills();
-loadSchemes();
+  showFilterPills();
+  loadSchemes();
 </script>
 {% endblock %}

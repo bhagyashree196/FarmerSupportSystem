@@ -10,117 +10,117 @@ const LANG = {
   // ══════════════════════════════════════════════════════════════════════════
   en: {
     // ── Navbar / base ──
-    navBrand:         "🌾 Kisan Sahayata",
-    navHome:          "Home",
-    navAdmin:         "Admin Login",
-    helplineBar:      "PM-KISAN Helpline: 155261 | PMFBY: 1800-200-7710",
+    navBrand: "🌾 Kisan Sahayata",
+    navHome: "Home",
+    navAdmin: "Admin Login",
+    helplineBar: "PM-KISAN Helpline: 155261 | PMFBY: 1800-200-7710",
 
     // ── Footer ──
-    footerTagline:    "Your trusted partner in agricultural growth",
-    footerSchemes:    "Schemes",
-    footerGovt:       "Government Schemes",
-    footerFinancial:  "Financial Support",
-    footerInsurance:  "Insurance",
-    footerHelpline:   "Helpline",
-    rightsText:       "© 2025 Kisan Sahayata. All rights reserved.",
+    footerTagline: "Your trusted partner in agricultural growth",
+    footerSchemes: "Schemes",
+    footerGovt: "Government Schemes",
+    footerFinancial: "Financial Support",
+    footerInsurance: "Insurance",
+    footerHelpline: "Helpline",
+    rightsText: "© 2025 Kisan Sahayata. All rights reserved.",
 
     // ── Chatbot ──
-    chatbotTitle:     "Kisan Mitra",
-    chatbotSubtitle:  "AI Farming Assistant",
-    chatbotWelcome:   "Namaskar 🙏 I am Kisan Mitra! I can help you find government schemes, loans, and insurance. Ask me anything!",
+    chatbotTitle: "Kisan Mitra",
+    chatbotSubtitle: "AI Farming Assistant",
+    chatbotWelcome: "Namaskar 🙏 I am Kisan Mitra! I can help you find government schemes, loans, and insurance. Ask me anything!",
     chatbotPlaceholder: "Ask about schemes...",
 
     // ── Index page ──
-    welcomeText:      "🌾 Kisan Sahayata",
-    heroSubtitle:     "Empowering Farmers with Government Schemes & Financial Support",
+    welcomeText: "🌾 Kisan Sahayata",
+    heroSubtitle: "Empowering Farmers with Government Schemes & Financial Support",
     searchPlaceholder: "Search schemes, loans, insurance...",
-    searchBtn:        "Search",
-    statLabelTotal:   "Total Schemes",
-    statLabelGovt:    "Govt Schemes",
-    statLabelFin:     "Financial",
-    statLabelIns:     "Insurance",
-    statLabelActive:  "Active",
+    searchBtn: "Search",
+    statLabelTotal: "Total Schemes",
+    statLabelGovt: "Govt Schemes",
+    statLabelFin: "Financial",
+    statLabelIns: "Insurance",
+    statLabelActive: "Active",
     featureGovtTitle: "📋 Government Schemes",
-    featureGovtDesc:  "Explore PM-KISAN, RKVY, Maharashtra state schemes and more with eligibility and application details.",
-    featureFinTitle:  "💰 Financial Support",
-    featureFinDesc:   "Discover KCC loans, PM-KMY pension, AIF infrastructure fund and subsidy programs at low interest.",
-    featureInsTitle:  "🛡️ Insurance",
-    featureInsDesc:   "Get PMFBY crop insurance, life insurance and relief schemes to protect against unexpected losses.",
+    featureGovtDesc: "Explore PM-KISAN, RKVY, Maharashtra state schemes and more with eligibility and application details.",
+    featureFinTitle: "💰 Financial Support",
+    featureFinDesc: "Discover KCC loans, PM-KMY pension, AIF infrastructure fund and subsidy programs at low interest.",
+    featureInsTitle: "🛡️ Insurance",
+    featureInsDesc: "Get PMFBY crop insurance, life insurance and relief schemes to protect against unexpected losses.",
     quickAccessTitle: "⚡ Quick Access",
-    pmkisanTitle:     "PM-KISAN Scheme",
-    pmkisanDesc:      "Direct income support of ₹6000/year",
-    pmfbyTitle:       "Crop Insurance (PMFBY)",
-    pmfbyDesc:        "Protect your crops against losses",
-    kccTitle:         "Kisan Credit Card",
-    kccDesc:          "Easy loans at 4% interest",
-    irrigationTitle:  "Irrigation Schemes",
-    irrigationDesc:   "Subsidy for drip/sprinkler systems",
-    happyFarmersTitle:"😊 Happy Farmers",
+    pmkisanTitle: "PM-KISAN Scheme",
+    pmkisanDesc: "Direct income support of ₹6000/year",
+    pmfbyTitle: "Crop Insurance (PMFBY)",
+    pmfbyDesc: "Protect your crops against losses",
+    kccTitle: "Kisan Credit Card",
+    kccDesc: "Easy loans at 4% interest",
+    irrigationTitle: "Irrigation Schemes",
+    irrigationDesc: "Subsidy for drip/sprinkler systems",
+    happyFarmersTitle: "😊 Happy Farmers",
 
     // ── Modals (Index) ──
-    modalGovtTitle:   "🌾 Select Scheme Type",
-    modalFinTitle:    "💰 Financial Support",
-    modalInsTitle:    "🛡️ Insurance Schemes",
-    labelFarmerName:  "Farmer Name",
-    labelLocation:    "Location (District/Village)",
-    labelSchemeType:  "Scheme Type",
+    modalGovtTitle: "🌾 Select Scheme Type",
+    modalFinTitle: "💰 Financial Support",
+    modalInsTitle: "🛡️ Insurance Schemes",
+    labelFarmerName: "Farmer Name",
+    labelLocation: "Location (District/Village)",
+    labelSchemeType: "Scheme Type",
     labelSupportType: "Support Type",
-    labelInsType:     "Insurance Type",
-    placeholderName:  "Enter your name",
-    placeholderLoc:   "Enter district or village",
-    selectDefault:    "-- Select Scheme Type --",
+    labelInsType: "Insurance Type",
+    placeholderName: "Enter your name",
+    placeholderLoc: "Enter district or village",
+    selectDefault: "-- Select Scheme Type --",
     selectDefaultFin: "-- Select Type --",
-    optCentral:       "Central",
-    optMaharashtra:   "State (Maharashtra)",
-    optAll:           "All Schemes",
-    btnViewSchemes:   "View Schemes",
-    btnViewFin:       "View Financial Schemes",
-    btnViewIns:       "View Insurance",
+    optCentral: "Central",
+    optMaharashtra: "State (Maharashtra)",
+    optAll: "All Schemes",
+    btnViewSchemes: "View Schemes",
+    btnViewFin: "View Financial Schemes",
+    btnViewIns: "View Insurance",
 
     // ── Govt Schemes page ──
-    govPageTitle:     "📋 Government Schemes",
-    govPageSubtitle:  "Explore Central & Maharashtra Government Agricultural Schemes",
-    filterAll:        "All Schemes",
-    filterCentral:    "Central",
-    filterMaharashtra:"Maharashtra",
-    loadingText:      "Loading schemes...",
+    govPageTitle: "📋 Government Schemes",
+    govPageSubtitle: "Explore Central & Maharashtra Government Agricultural Schemes",
+    filterAll: "All Schemes",
+    filterCentral: "Central",
+    filterMaharashtra: "Maharashtra",
+    loadingText: "Loading schemes...",
     labelEligibility: "Eligibility:",
-    labelBenefits:    "Benefits:",
-    labelDeadline:    "Deadline:",
-    labelStatus:      "Active",
-    labelInactive:    "Inactive",
-    btnApply:         "Apply Now",
-    btnDetails:       "View Details",
-    noSchemes:        "No schemes found",
+    labelBenefits: "Benefits:",
+    labelDeadline: "Deadline:",
+    labelStatus: "Active",
+    labelInactive: "Inactive",
+    btnApply: "Apply Now",
+    btnDetails: "View Details",
+    noSchemes: "No schemes found",
 
     // ── Financial page ──
-    finPageTitle:     "💰 Financial Support",
-    finPageSubtitle:  "Loans, subsidies, grants & financial assistance for farmers",
+    finPageTitle: "💰 Financial Support",
+    finPageSubtitle: "Loans, subsidies, grants & financial assistance for farmers",
 
     // ── Insurance page ──
-    insPageTitle:     "🛡️ Insurance Schemes",
-    insPageSubtitle:  "Crop, life, livestock & accident insurance for farmers",
+    insPageTitle: "🛡️ Insurance Schemes",
+    insPageSubtitle: "Crop, life, livestock & accident insurance for farmers",
 
     // ── Scheme Detail page ──
-    detailDeadline:   "Deadline:",
-    detailOfficialBtn:"Official Website",
-    detailDescTitle:  "Description",
-    detailHowTitle:   "How to Apply",
-    detailFaqTitle:   "Important Information",
-    detailEligTitle:  "Eligibility",
-    detailBenTitle:   "Benefits",
-    detailPeriodTitle:"Period",
-    detailStart:      "Start:",
-    detailEnd:        "End:",
-    detailHelpTitle:  "Helpline",
-    detailDocsTitle:  "Documents Required",
-    detailBackBtn:    "Back",
-    detailLoadingText:"Loading scheme details...",
-    detailError:      "Scheme not found.",
-    detailNoId:       "No scheme ID provided.",
-    detailNoApply:    "Contact your nearest Agriculture Office",
+    detailDeadline: "Deadline:",
+    detailOfficialBtn: "Official Website",
+    detailDescTitle: "Description",
+    detailHowTitle: "How to Apply",
+    detailFaqTitle: "Important Information",
+    detailEligTitle: "Eligibility",
+    detailBenTitle: "Benefits",
+    detailPeriodTitle: "Period",
+    detailStart: "Start:",
+    detailEnd: "End:",
+    detailHelpTitle: "Helpline",
+    detailDocsTitle: "Documents Required",
+    detailBackBtn: "Back",
+    detailLoadingText: "Loading scheme details...",
+    detailError: "Scheme not found.",
+    detailNoId: "No scheme ID provided.",
+    detailNoApply: "Contact your nearest Agriculture Office",
     detailNoHelpline: "Contact Agriculture Office",
-    detailNoDocs:     "Aadhar Card, Land Records",
+    detailNoDocs: "Aadhar Card, Land Records",
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -128,117 +128,117 @@ const LANG = {
   // ══════════════════════════════════════════════════════════════════════════
   hi: {
     // ── Navbar / base ──
-    navBrand:         "🌾 किसान सहायता",
-    navHome:          "होम",
-    navAdmin:         "एडमिन लॉगिन",
-    helplineBar:      "पीएम-किसान हेल्पलाइन: 155261 | पीएमएफबीवाई: 1800-200-7710",
+    navBrand: "🌾 किसान सहायता",
+    navHome: "होम",
+    navAdmin: "एडमिन लॉगिन",
+    helplineBar: "पीएम-किसान हेल्पलाइन: 155261 | पीएमएफबीवाई: 1800-200-7710",
 
     // ── Footer ──
-    footerTagline:    "कृषि विकास में आपका विश्वसनीय साथी",
-    footerSchemes:    "योजनाएं",
-    footerGovt:       "सरकारी योजनाएं",
-    footerFinancial:  "वित्तीय सहायता",
-    footerInsurance:  "बीमा",
-    footerHelpline:   "हेल्पलाइन",
-    rightsText:       "© 2025 किसान सहायता। सर्वाधिकार सुरक्षित।",
+    footerTagline: "कृषि विकास में आपका विश्वसनीय साथी",
+    footerSchemes: "योजनाएं",
+    footerGovt: "सरकारी योजनाएं",
+    footerFinancial: "वित्तीय सहायता",
+    footerInsurance: "बीमा",
+    footerHelpline: "हेल्पलाइन",
+    rightsText: "© 2025 किसान सहायता। सर्वाधिकार सुरक्षित।",
 
     // ── Chatbot ──
-    chatbotTitle:     "किसान मित्र",
-    chatbotSubtitle:  "कृषि सहायक",
-    chatbotWelcome:   "नमस्कार 🙏 मैं किसान मित्र हूँ! मैं आपको सरकारी योजनाएं, ऋण और बीमा खोजने में मदद कर सकता हूँ।",
+    chatbotTitle: "किसान मित्र",
+    chatbotSubtitle: "कृषि सहायक",
+    chatbotWelcome: "नमस्कार 🙏 मैं किसान मित्र हूँ! मैं आपको सरकारी योजनाएं, ऋण और बीमा खोजने में मदद कर सकता हूँ।",
     chatbotPlaceholder: "योजनाओं के बारे में पूछें...",
 
     // ── Index page ──
-    welcomeText:      "🌾 किसान सहायता",
-    heroSubtitle:     "सरकारी योजनाओं और वित्तीय सहायता से किसानों को सशक्त बनाना",
+    welcomeText: "🌾 किसान सहायता",
+    heroSubtitle: "सरकारी योजनाओं और वित्तीय सहायता से किसानों को सशक्त बनाना",
     searchPlaceholder: "योजनाएं, ऋण, बीमा खोजें...",
-    searchBtn:        "खोजें",
-    statLabelTotal:   "कुल योजनाएं",
-    statLabelGovt:    "सरकारी योजनाएं",
-    statLabelFin:     "वित्तीय",
-    statLabelIns:     "बीमा",
-    statLabelActive:  "सक्रिय",
+    searchBtn: "खोजें",
+    statLabelTotal: "कुल योजनाएं",
+    statLabelGovt: "सरकारी योजनाएं",
+    statLabelFin: "वित्तीय",
+    statLabelIns: "बीमा",
+    statLabelActive: "सक्रिय",
     featureGovtTitle: "📋 सरकारी योजनाएं",
-    featureGovtDesc:  "पीएम-किसान, आरकेवीवाई, महाराष्ट्र राज्य योजनाएं और अन्य पात्रता और आवेदन विवरण के साथ देखें।",
-    featureFinTitle:  "💰 वित्तीय सहायता",
-    featureFinDesc:   "केसीसी ऋण, पीएम-केएमवाई पेंशन, एआईएफ इन्फ्रास्ट्रक्चर फंड और कम ब्याज पर सब्सिडी कार्यक्रम।",
-    featureInsTitle:  "🛡️ बीमा",
-    featureInsDesc:   "पीएमएफबीवाई फसल बीमा, जीवन बीमा और अप्रत्याशित नुकसान से बचाने की राहत योजनाएं।",
+    featureGovtDesc: "पीएम-किसान, आरकेवीवाई, महाराष्ट्र राज्य योजनाएं और अन्य पात्रता और आवेदन विवरण के साथ देखें।",
+    featureFinTitle: "💰 वित्तीय सहायता",
+    featureFinDesc: "केसीसी ऋण, पीएम-केएमवाई पेंशन, एआईएफ इन्फ्रास्ट्रक्चर फंड और कम ब्याज पर सब्सिडी कार्यक्रम।",
+    featureInsTitle: "🛡️ बीमा",
+    featureInsDesc: "पीएमएफबीवाई फसल बीमा, जीवन बीमा और अप्रत्याशित नुकसान से बचाने की राहत योजनाएं।",
     quickAccessTitle: "⚡ त्वरित पहुँच",
-    pmkisanTitle:     "पीएम-किसान योजना",
-    pmkisanDesc:      "₹6000/वर्ष की प्रत्यक्ष आय सहायता",
-    pmfbyTitle:       "फसल बीमा (पीएमएफबीवाई)",
-    pmfbyDesc:        "अपनी फसलों को नुकसान से बचाएं",
-    kccTitle:         "किसान क्रेडिट कार्ड",
-    kccDesc:          "4% ब्याज पर आसान ऋण",
-    irrigationTitle:  "सिंचाई योजनाएं",
-    irrigationDesc:   "ड्रिप/स्प्रिंकलर सिस्टम पर सब्सिडी",
-    happyFarmersTitle:"😊 खुश किसान",
+    pmkisanTitle: "पीएम-किसान योजना",
+    pmkisanDesc: "₹6000/वर्ष की प्रत्यक्ष आय सहायता",
+    pmfbyTitle: "फसल बीमा (पीएमएफबीवाई)",
+    pmfbyDesc: "अपनी फसलों को नुकसान से बचाएं",
+    kccTitle: "किसान क्रेडिट कार्ड",
+    kccDesc: "4% ब्याज पर आसान ऋण",
+    irrigationTitle: "सिंचाई योजनाएं",
+    irrigationDesc: "ड्रिप/स्प्रिंकलर सिस्टम पर सब्सिडी",
+    happyFarmersTitle: "😊 खुश किसान",
 
     // ── Modals ──
-    modalGovtTitle:   "🌾 योजना का प्रकार चुनें",
-    modalFinTitle:    "💰 वित्तीय सहायता",
-    modalInsTitle:    "🛡️ बीमा योजनाएं",
-    labelFarmerName:  "किसान का नाम",
-    labelLocation:    "स्थान (जिला/गांव)",
-    labelSchemeType:  "योजना का प्रकार",
+    modalGovtTitle: "🌾 योजना का प्रकार चुनें",
+    modalFinTitle: "💰 वित्तीय सहायता",
+    modalInsTitle: "🛡️ बीमा योजनाएं",
+    labelFarmerName: "किसान का नाम",
+    labelLocation: "स्थान (जिला/गांव)",
+    labelSchemeType: "योजना का प्रकार",
     labelSupportType: "सहायता का प्रकार",
-    labelInsType:     "बीमा का प्रकार",
-    placeholderName:  "अपना नाम दर्ज करें",
-    placeholderLoc:   "जिला या गांव दर्ज करें",
-    selectDefault:    "-- योजना का प्रकार चुनें --",
+    labelInsType: "बीमा का प्रकार",
+    placeholderName: "अपना नाम दर्ज करें",
+    placeholderLoc: "जिला या गांव दर्ज करें",
+    selectDefault: "-- योजना का प्रकार चुनें --",
     selectDefaultFin: "-- प्रकार चुनें --",
-    optCentral:       "केंद्रीय",
-    optMaharashtra:   "राज्य (महाराष्ट्र)",
-    optAll:           "सभी योजनाएं",
-    btnViewSchemes:   "योजनाएं देखें",
-    btnViewFin:       "वित्तीय योजनाएं देखें",
-    btnViewIns:       "बीमा देखें",
+    optCentral: "केंद्रीय",
+    optMaharashtra: "राज्य (महाराष्ट्र)",
+    optAll: "सभी योजनाएं",
+    btnViewSchemes: "योजनाएं देखें",
+    btnViewFin: "वित्तीय योजनाएं देखें",
+    btnViewIns: "बीमा देखें",
 
     // ── Govt Schemes page ──
-    govPageTitle:     "📋 सरकारी योजनाएं",
-    govPageSubtitle:  "केंद्र और महाराष्ट्र सरकार की कृषि योजनाएं देखें",
-    filterAll:        "सभी योजनाएं",
-    filterCentral:    "केंद्रीय",
-    filterMaharashtra:"महाराष्ट्र",
-    loadingText:      "योजनाएं लोड हो रही हैं...",
+    govPageTitle: "📋 सरकारी योजनाएं",
+    govPageSubtitle: "केंद्र और महाराष्ट्र सरकार की कृषि योजनाएं देखें",
+    filterAll: "सभी योजनाएं",
+    filterCentral: "केंद्रीय",
+    filterMaharashtra: "महाराष्ट्र",
+    loadingText: "योजनाएं लोड हो रही हैं...",
     labelEligibility: "पात्रता:",
-    labelBenefits:    "लाभ:",
-    labelDeadline:    "अंतिम तिथि:",
-    labelStatus:      "सक्रिय",
-    labelInactive:    "निष्क्रिय",
-    btnApply:         "अभी आवेदन करें",
-    btnDetails:       "विवरण देखें",
-    noSchemes:        "कोई योजना नहीं मिली",
+    labelBenefits: "लाभ:",
+    labelDeadline: "अंतिम तिथि:",
+    labelStatus: "सक्रिय",
+    labelInactive: "निष्क्रिय",
+    btnApply: "अभी आवेदन करें",
+    btnDetails: "विवरण देखें",
+    noSchemes: "कोई योजना नहीं मिली",
 
     // ── Financial page ──
-    finPageTitle:     "💰 वित्तीय सहायता",
-    finPageSubtitle:  "किसानों के लिए ऋण, सब्सिडी, अनुदान और वित्तीय सहायता",
+    finPageTitle: "💰 वित्तीय सहायता",
+    finPageSubtitle: "किसानों के लिए ऋण, सब्सिडी, अनुदान और वित्तीय सहायता",
 
     // ── Insurance page ──
-    insPageTitle:     "🛡️ बीमा योजनाएं",
-    insPageSubtitle:  "किसानों के लिए फसल, जीवन, पशुधन और दुर्घटना बीमा",
+    insPageTitle: "🛡️ बीमा योजनाएं",
+    insPageSubtitle: "किसानों के लिए फसल, जीवन, पशुधन और दुर्घटना बीमा",
 
     // ── Scheme Detail page ──
-    detailDeadline:   "अंतिम तिथि:",
-    detailOfficialBtn:"आधिकारिक वेबसाइट",
-    detailDescTitle:  "विवरण",
-    detailHowTitle:   "आवेदन कैसे करें",
-    detailFaqTitle:   "महत्वपूर्ण जानकारी",
-    detailEligTitle:  "पात्रता",
-    detailBenTitle:   "लाभ",
-    detailPeriodTitle:"अवधि",
-    detailStart:      "शुरू:",
-    detailEnd:        "समाप्त:",
-    detailHelpTitle:  "हेल्पलाइन",
-    detailDocsTitle:  "आवश्यक दस्तावेज",
-    detailBackBtn:    "वापस",
-    detailLoadingText:"योजना विवरण लोड हो रहा है...",
-    detailError:      "योजना नहीं मिली।",
-    detailNoId:       "कोई योजना आईडी नहीं दी गई।",
-    detailNoApply:    "अपने निकटतम कृषि कार्यालय से संपर्क करें",
+    detailDeadline: "अंतिम तिथि:",
+    detailOfficialBtn: "आधिकारिक वेबसाइट",
+    detailDescTitle: "विवरण",
+    detailHowTitle: "आवेदन कैसे करें",
+    detailFaqTitle: "महत्वपूर्ण जानकारी",
+    detailEligTitle: "पात्रता",
+    detailBenTitle: "लाभ",
+    detailPeriodTitle: "अवधि",
+    detailStart: "शुरू:",
+    detailEnd: "समाप्त:",
+    detailHelpTitle: "हेल्पलाइन",
+    detailDocsTitle: "आवश्यक दस्तावेज",
+    detailBackBtn: "वापस",
+    detailLoadingText: "योजना विवरण लोड हो रहा है...",
+    detailError: "योजना नहीं मिली।",
+    detailNoId: "कोई योजना आईडी नहीं दी गई।",
+    detailNoApply: "अपने निकटतम कृषि कार्यालय से संपर्क करें",
     detailNoHelpline: "कृषि कार्यालय से संपर्क करें",
-    detailNoDocs:     "आधार कार्ड, भूमि अभिलेख",
+    detailNoDocs: "आधार कार्ड, भूमि अभिलेख",
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -246,117 +246,117 @@ const LANG = {
   // ══════════════════════════════════════════════════════════════════════════
   mr: {
     // ── Navbar / base ──
-    navBrand:         "🌾 किसान सहायता",
-    navHome:          "मुख्यपृष्ठ",
-    navAdmin:         "अॅडमिन लॉगिन",
-    helplineBar:      "पीएम-किसान हेल्पलाइन: 155261 | पीएमएफबीवाय: 1800-200-7710",
+    navBrand: "🌾 किसान सहायता",
+    navHome: "मुख्यपृष्ठ",
+    navAdmin: "अॅडमिन लॉगिन",
+    helplineBar: "पीएम-किसान हेल्पलाइन: 155261 | पीएमएफबीवाय: 1800-200-7710",
 
     // ── Footer ──
-    footerTagline:    "कृषी विकासातील तुमचा विश्वासू भागीदार",
-    footerSchemes:    "योजना",
-    footerGovt:       "सरकारी योजना",
-    footerFinancial:  "आर्थिक सहाय्य",
-    footerInsurance:  "विमा",
-    footerHelpline:   "हेल्पलाइन",
-    rightsText:       "© 2025 किसान सहायता. सर्व हक्क राखीव.",
+    footerTagline: "कृषी विकासातील तुमचा विश्वासू भागीदार",
+    footerSchemes: "योजना",
+    footerGovt: "सरकारी योजना",
+    footerFinancial: "आर्थिक सहाय्य",
+    footerInsurance: "विमा",
+    footerHelpline: "हेल्पलाइन",
+    rightsText: "© 2025 किसान सहायता. सर्व हक्क राखीव.",
 
     // ── Chatbot ──
-    chatbotTitle:     "किसान मित्र",
-    chatbotSubtitle:  "कृषी सहाय्यक",
-    chatbotWelcome:   "नमस्कार 🙏 मी किसान मित्र आहे! मी तुम्हाला सरकारी योजना, कर्ज आणि विमा शोधण्यात मदत करू शकतो.",
+    chatbotTitle: "किसान मित्र",
+    chatbotSubtitle: "कृषी सहाय्यक",
+    chatbotWelcome: "नमस्कार 🙏 मी किसान मित्र आहे! मी तुम्हाला सरकारी योजना, कर्ज आणि विमा शोधण्यात मदत करू शकतो.",
     chatbotPlaceholder: "योजनांबद्दल विचारा...",
 
     // ── Index page ──
-    welcomeText:      "🌾 किसान सहायता",
-    heroSubtitle:     "सरकारी योजना आणि आर्थिक मदतीद्वारे शेतकऱ्यांना सक्षम बनवणे",
+    welcomeText: "🌾 किसान सहायता",
+    heroSubtitle: "सरकारी योजना आणि आर्थिक मदतीद्वारे शेतकऱ्यांना सक्षम बनवणे",
     searchPlaceholder: "योजना, कर्ज, विमा शोधा...",
-    searchBtn:        "शोधा",
-    statLabelTotal:   "एकूण योजना",
-    statLabelGovt:    "सरकारी योजना",
-    statLabelFin:     "आर्थिक",
-    statLabelIns:     "विमा",
-    statLabelActive:  "सक्रिय",
+    searchBtn: "शोधा",
+    statLabelTotal: "एकूण योजना",
+    statLabelGovt: "सरकारी योजना",
+    statLabelFin: "आर्थिक",
+    statLabelIns: "विमा",
+    statLabelActive: "सक्रिय",
     featureGovtTitle: "📋 सरकारी योजना",
-    featureGovtDesc:  "पीएम-किसान, आरकेव्हीवाय, महाराष्ट्र राज्य योजना आणि इतर पात्रता व अर्ज तपशीलांसह पाहा.",
-    featureFinTitle:  "💰 आर्थिक सहाय्य",
-    featureFinDesc:   "केसीसी कर्ज, पीएम-केएमवाय पेन्शन, एआयएफ पायाभूत सुविधा निधी आणि कमी व्याजावर अनुदान कार्यक्रम.",
-    featureInsTitle:  "🛡️ विमा",
-    featureInsDesc:   "पीएमएफबीवाय पीक विमा, जीवन विमा आणि अनपेक्षित नुकसानापासून संरक्षण करणाऱ्या योजना.",
+    featureGovtDesc: "पीएम-किसान, आरकेव्हीवाय, महाराष्ट्र राज्य योजना आणि इतर पात्रता व अर्ज तपशीलांसह पाहा.",
+    featureFinTitle: "💰 आर्थिक सहाय्य",
+    featureFinDesc: "केसीसी कर्ज, पीएम-केएमवाय पेन्शन, एआयएफ पायाभूत सुविधा निधी आणि कमी व्याजावर अनुदान कार्यक्रम.",
+    featureInsTitle: "🛡️ विमा",
+    featureInsDesc: "पीएमएफबीवाय पीक विमा, जीवन विमा आणि अनपेक्षित नुकसानापासून संरक्षण करणाऱ्या योजना.",
     quickAccessTitle: "⚡ जलद प्रवेश",
-    pmkisanTitle:     "पीएम-किसान योजना",
-    pmkisanDesc:      "₹6000/वर्ष थेट उत्पन्न सहाय्य",
-    pmfbyTitle:       "पीक विमा (पीएमएफबीवाय)",
-    pmfbyDesc:        "तुमच्या पिकांना नुकसानापासून वाचवा",
-    kccTitle:         "किसान क्रेडिट कार्ड",
-    kccDesc:          "4% व्याजावर सहज कर्ज",
-    irrigationTitle:  "सिंचन योजना",
-    irrigationDesc:   "ठिबक/तुषार सिंचनावर अनुदान",
-    happyFarmersTitle:"😊 आनंदी शेतकरी",
+    pmkisanTitle: "पीएम-किसान योजना",
+    pmkisanDesc: "₹6000/वर्ष थेट उत्पन्न सहाय्य",
+    pmfbyTitle: "पीक विमा (पीएमएफबीवाय)",
+    pmfbyDesc: "तुमच्या पिकांना नुकसानापासून वाचवा",
+    kccTitle: "किसान क्रेडिट कार्ड",
+    kccDesc: "4% व्याजावर सहज कर्ज",
+    irrigationTitle: "सिंचन योजना",
+    irrigationDesc: "ठिबक/तुषार सिंचनावर अनुदान",
+    happyFarmersTitle: "😊 आनंदी शेतकरी",
 
     // ── Modals ──
-    modalGovtTitle:   "🌾 योजनेचा प्रकार निवडा",
-    modalFinTitle:    "💰 आर्थिक सहाय्य",
-    modalInsTitle:    "🛡️ विमा योजना",
-    labelFarmerName:  "शेतकऱ्याचे नाव",
-    labelLocation:    "स्थान (जिल्हा/गाव)",
-    labelSchemeType:  "योजनेचा प्रकार",
+    modalGovtTitle: "🌾 योजनेचा प्रकार निवडा",
+    modalFinTitle: "💰 आर्थिक सहाय्य",
+    modalInsTitle: "🛡️ विमा योजना",
+    labelFarmerName: "शेतकऱ्याचे नाव",
+    labelLocation: "स्थान (जिल्हा/गाव)",
+    labelSchemeType: "योजनेचा प्रकार",
     labelSupportType: "सहाय्याचा प्रकार",
-    labelInsType:     "विम्याचा प्रकार",
-    placeholderName:  "तुमचे नाव प्रविष्ट करा",
-    placeholderLoc:   "जिल्हा किंवा गाव प्रविष्ट करा",
-    selectDefault:    "-- योजनेचा प्रकार निवडा --",
+    labelInsType: "विम्याचा प्रकार",
+    placeholderName: "तुमचे नाव प्रविष्ट करा",
+    placeholderLoc: "जिल्हा किंवा गाव प्रविष्ट करा",
+    selectDefault: "-- योजनेचा प्रकार निवडा --",
     selectDefaultFin: "-- प्रकार निवडा --",
-    optCentral:       "केंद्रीय",
-    optMaharashtra:   "राज्य (महाराष्ट्र)",
-    optAll:           "सर्व योजना",
-    btnViewSchemes:   "योजना पाहा",
-    btnViewFin:       "आर्थिक योजना पाहा",
-    btnViewIns:       "विमा पाहा",
+    optCentral: "केंद्रीय",
+    optMaharashtra: "राज्य (महाराष्ट्र)",
+    optAll: "सर्व योजना",
+    btnViewSchemes: "योजना पाहा",
+    btnViewFin: "आर्थिक योजना पाहा",
+    btnViewIns: "विमा पाहा",
 
     // ── Govt Schemes page ──
-    govPageTitle:     "📋 सरकारी योजना",
-    govPageSubtitle:  "केंद्र आणि महाराष्ट्र सरकारच्या कृषी योजना पाहा",
-    filterAll:        "सर्व योजना",
-    filterCentral:    "केंद्रीय",
-    filterMaharashtra:"महाराष्ट्र",
-    loadingText:      "योजना लोड होत आहेत...",
+    govPageTitle: "📋 सरकारी योजना",
+    govPageSubtitle: "केंद्र आणि महाराष्ट्र सरकारच्या कृषी योजना पाहा",
+    filterAll: "सर्व योजना",
+    filterCentral: "केंद्रीय",
+    filterMaharashtra: "महाराष्ट्र",
+    loadingText: "योजना लोड होत आहेत...",
     labelEligibility: "पात्रता:",
-    labelBenefits:    "फायदे:",
-    labelDeadline:    "अंतिम तारीख:",
-    labelStatus:      "सक्रिय",
-    labelInactive:    "निष्क्रिय",
-    btnApply:         "आता अर्ज करा",
-    btnDetails:       "तपशील पाहा",
-    noSchemes:        "कोणतीही योजना सापडली नाही",
+    labelBenefits: "फायदे:",
+    labelDeadline: "अंतिम तारीख:",
+    labelStatus: "सक्रिय",
+    labelInactive: "निष्क्रिय",
+    btnApply: "आता अर्ज करा",
+    btnDetails: "तपशील पाहा",
+    noSchemes: "कोणतीही योजना सापडली नाही",
 
     // ── Financial page ──
-    finPageTitle:     "💰 आर्थिक सहाय्य",
-    finPageSubtitle:  "शेतकऱ्यांसाठी कर्ज, अनुदान, अनुदान आणि आर्थिक सहाय्य",
+    finPageTitle: "💰 आर्थिक सहाय्य",
+    finPageSubtitle: "शेतकऱ्यांसाठी कर्ज, अनुदान, अनुदान आणि आर्थिक सहाय्य",
 
     // ── Insurance page ──
-    insPageTitle:     "🛡️ विमा योजना",
-    insPageSubtitle:  "शेतकऱ्यांसाठी पीक, जीवन, पशुधन आणि अपघात विमा",
+    insPageTitle: "🛡️ विमा योजना",
+    insPageSubtitle: "शेतकऱ्यांसाठी पीक, जीवन, पशुधन आणि अपघात विमा",
 
     // ── Scheme Detail page ──
-    detailDeadline:   "अंतिम तारीख:",
-    detailOfficialBtn:"अधिकृत वेबसाइट",
-    detailDescTitle:  "वर्णन",
-    detailHowTitle:   "अर्ज कसा करावा",
-    detailFaqTitle:   "महत्त्वाची माहिती",
-    detailEligTitle:  "पात्रता",
-    detailBenTitle:   "फायदे",
-    detailPeriodTitle:"कालावधी",
-    detailStart:      "सुरुवात:",
-    detailEnd:        "समाप्ती:",
-    detailHelpTitle:  "हेल्पलाइन",
-    detailDocsTitle:  "आवश्यक कागदपत्रे",
-    detailBackBtn:    "मागे",
-    detailLoadingText:"योजनेचे तपशील लोड होत आहेत...",
-    detailError:      "योजना सापडली नाही.",
-    detailNoId:       "कोणताही योजना आयडी दिला नाही.",
-    detailNoApply:    "तुमच्या जवळच्या कृषी कार्यालयाशी संपर्क साधा",
+    detailDeadline: "अंतिम तारीख:",
+    detailOfficialBtn: "अधिकृत वेबसाइट",
+    detailDescTitle: "वर्णन",
+    detailHowTitle: "अर्ज कसा करावा",
+    detailFaqTitle: "महत्त्वाची माहिती",
+    detailEligTitle: "पात्रता",
+    detailBenTitle: "फायदे",
+    detailPeriodTitle: "कालावधी",
+    detailStart: "सुरुवात:",
+    detailEnd: "समाप्ती:",
+    detailHelpTitle: "हेल्पलाइन",
+    detailDocsTitle: "आवश्यक कागदपत्रे",
+    detailBackBtn: "मागे",
+    detailLoadingText: "योजनेचे तपशील लोड होत आहेत...",
+    detailError: "योजना सापडली नाही.",
+    detailNoId: "कोणताही योजना आयडी दिला नाही.",
+    detailNoApply: "तुमच्या जवळच्या कृषी कार्यालयाशी संपर्क साधा",
     detailNoHelpline: "कृषी कार्यालयाशी संपर्क साधा",
-    detailNoDocs:     "आधार कार्ड, जमीन नोंदी",
+    detailNoDocs: "आधार कार्ड, जमीन नोंदी",
   }
 };
 
@@ -399,51 +399,51 @@ function applyAllTranslations() {
 
   // ── SHARED (all pages) ──────────────────────────────────────────────────
   t('footerTagline', 'footerTagline');
-  t('rightsText',    'rightsText');
+  t('rightsText', 'rightsText');
 
   // Footer links
-  tq('footer h6:first-of-type',     'footerSchemes');
-  tq('footer a[href*="govscheme"]',  'footerGovt');
-  tq('footer a[href*="financial"]',  'footerFinancial');
-  tq('footer a[href*="insurance"]',  'footerInsurance');
+  tq('footer h6:first-of-type', 'footerSchemes');
+  tq('footer a[href*="govscheme"]', 'footerGovt');
+  tq('footer a[href*="financial"]', 'footerFinancial');
+  tq('footer a[href*="insurance"]', 'footerInsurance');
 
   // Chatbot
-  tq('.chatbot-header .fw-bold',       'chatbotTitle');
-  tq('.chatbot-header small',          'chatbotSubtitle');
-  ph('user-input',                     'chatbotPlaceholder');
+  tq('.chatbot-header .fw-bold', 'chatbotTitle');
+  tq('.chatbot-header small', 'chatbotSubtitle');
+  ph('user-input', 'chatbotPlaceholder');
 
   // ── INDEX page ─────────────────────────────────────────────────────────
   if (pg === 'index') {
-    t('welcomeText',  'welcomeText');
+    t('welcomeText', 'welcomeText');
     t('heroSubtitle', 'heroSubtitle');
     ph('searchInput', 'searchPlaceholder');
     tq('#searchInput + button', 'searchBtn');
     tq('.btn[onclick="performSearch()"]', 'searchBtn');
 
     // Stat labels
-    tq('#statTotal + .stat-label',  'statLabelTotal');
-    tq('#statGovt + .stat-label',   'statLabelGovt');
-    tq('#statFin + .stat-label',    'statLabelFin');
-    tq('#statIns + .stat-label',    'statLabelIns');
+    tq('#statTotal + .stat-label', 'statLabelTotal');
+    tq('#statGovt + .stat-label', 'statLabelGovt');
+    tq('#statFin + .stat-label', 'statLabelFin');
+    tq('#statIns + .stat-label', 'statLabelIns');
     tq('#statActive + .stat-label', 'statLabelActive');
     // stat labels via iteration since they follow the stat-number divs
     const statLabels = document.querySelectorAll('.stat-label');
-    const statKeys   = ['statLabelTotal','statLabelGovt','statLabelFin','statLabelIns','statLabelActive'];
+    const statKeys = ['statLabelTotal', 'statLabelGovt', 'statLabelFin', 'statLabelIns', 'statLabelActive'];
     statLabels.forEach((el, i) => { if (statKeys[i]) el.textContent = T(statKeys[i]); });
 
     // Feature cards
     const fcards = document.querySelectorAll('.feature-card');
     if (fcards[0]) {
       fcards[0].querySelector('h3').textContent = T('featureGovtTitle');
-      fcards[0].querySelector('p').textContent  = T('featureGovtDesc');
+      fcards[0].querySelector('p').textContent = T('featureGovtDesc');
     }
     if (fcards[1]) {
       fcards[1].querySelector('h3').textContent = T('featureFinTitle');
-      fcards[1].querySelector('p').textContent  = T('featureFinDesc');
+      fcards[1].querySelector('p').textContent = T('featureFinDesc');
     }
     if (fcards[2]) {
       fcards[2].querySelector('h3').textContent = T('featureInsTitle');
-      fcards[2].querySelector('p').textContent  = T('featureInsDesc');
+      fcards[2].querySelector('p').textContent = T('featureInsDesc');
     }
 
     // Quick access title
@@ -458,21 +458,21 @@ function applyAllTranslations() {
     // Quick link cards
     const linkCards = document.querySelectorAll('.link-card');
     const linkData = [
-      ['pmkisanTitle','pmkisanDesc'],
-      ['pmfbyTitle','pmfbyDesc'],
-      ['kccTitle','kccDesc'],
-      ['irrigationTitle','irrigationDesc']
+      ['pmkisanTitle', 'pmkisanDesc'],
+      ['pmfbyTitle', 'pmfbyDesc'],
+      ['kccTitle', 'kccDesc'],
+      ['irrigationTitle', 'irrigationDesc']
     ];
     linkCards.forEach((card, i) => {
       if (!linkData[i]) return;
       const h5 = card.querySelector('h5');
-      const p  = card.querySelector('p');
+      const p = card.querySelector('p');
       if (h5) h5.textContent = T(linkData[i][0]);
-      if (p)  p.textContent  = T(linkData[i][1]);
+      if (p) p.textContent = T(linkData[i][1]);
     });
 
     // Modal titles
-    tq('#schemeModal .modal-title',    'modalGovtTitle');
+    tq('#schemeModal .modal-title', 'modalGovtTitle');
     tq('#financialModal .modal-title', 'modalFinTitle');
     tq('#insuranceModal .modal-title', 'modalInsTitle');
 
@@ -512,31 +512,31 @@ function applyAllTranslations() {
       T('selectDefaultFin'));
 
     // Modal submit buttons
-    const schemBtn  = document.querySelector('#schemeForm button[type="submit"]');
-    const finBtn    = document.querySelector('#financialForm button[type="submit"]');
-    const insBtn    = document.querySelector('#insuranceForm button[type="submit"]');
+    const schemBtn = document.querySelector('#schemeForm button[type="submit"]');
+    const finBtn = document.querySelector('#financialForm button[type="submit"]');
+    const insBtn = document.querySelector('#insuranceForm button[type="submit"]');
     if (schemBtn) schemBtn.innerHTML = T('btnViewSchemes') + ' <i class="fas fa-arrow-right ms-1"></i>';
-    if (finBtn)   finBtn.innerHTML   = T('btnViewFin')     + ' <i class="fas fa-arrow-right ms-1"></i>';
-    if (insBtn)   insBtn.innerHTML   = T('btnViewIns')     + ' <i class="fas fa-arrow-right ms-1"></i>';
+    if (finBtn) finBtn.innerHTML = T('btnViewFin') + ' <i class="fas fa-arrow-right ms-1"></i>';
+    if (insBtn) insBtn.innerHTML = T('btnViewIns') + ' <i class="fas fa-arrow-right ms-1"></i>';
   }
 
   // ── GOVSCHEME page ─────────────────────────────────────────────────────
   if (pg === 'govscheme') {
-    tq('.scheme-title',    'govPageTitle');
-    t('selectedTypeText',  'govPageSubtitle');
+    tq('.scheme-title', 'govPageTitle');
+    t('selectedTypeText', 'govPageSubtitle');
     translateFilterBtns();
   }
 
   // ── FINANCIAL page ─────────────────────────────────────────────────────
   if (pg === 'financial') {
-    tq('.scheme-title',    'finPageTitle');
+    tq('.scheme-title', 'finPageTitle');
     tq('.scheme-subtitle', 'finPageSubtitle');
     translateFilterBtns();
   }
 
   // ── INSURANCE page ─────────────────────────────────────────────────────
   if (pg === 'insurance') {
-    tq('.scheme-title',    'insPageTitle');
+    tq('.scheme-title', 'insPageTitle');
     tq('.scheme-subtitle', 'insPageSubtitle');
     translateFilterBtns();
   }
@@ -549,8 +549,8 @@ function applyAllTranslations() {
 function translateFilterBtns() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     const v = btn.dataset.type;
-    if (v === 'All')         btn.textContent = T('filterAll');
-    if (v === 'Central')     btn.textContent = T('filterCentral');
+    if (v === 'All') btn.textContent = T('filterAll');
+    if (v === 'Central') btn.textContent = T('filterCentral');
     if (v === 'Maharashtra') btn.textContent = T('filterMaharashtra');
   });
 }
@@ -573,20 +573,20 @@ function translateSchemeCards(container) {
     // Bold label inside <p><b>...</b>
     card.querySelectorAll('p b').forEach(b => {
       const raw = b.textContent.trim();
-      if (raw === 'Eligibility:')  b.textContent = T('labelEligibility');
-      if (raw === 'Benefits:')     b.textContent = T('labelBenefits');
-      if (raw === 'Deadline:')     b.textContent = T('labelDeadline');
+      if (raw === 'Eligibility:') b.textContent = T('labelEligibility');
+      if (raw === 'Benefits:') b.textContent = T('labelBenefits');
+      if (raw === 'Deadline:') b.textContent = T('labelDeadline');
       // Hindi/Marathi — idempotent, already translated value
     });
     // Status badge text
     card.querySelectorAll('.badge').forEach(badge => {
-      if (badge.textContent.trim() === 'Active')   badge.textContent = T('labelStatus');
+      if (badge.textContent.trim() === 'Active') badge.textContent = T('labelStatus');
       if (badge.textContent.trim() === 'Inactive') badge.textContent = T('labelInactive');
     });
     // Buttons
-    const applyBtn  = card.querySelector('.btn-apply');
+    const applyBtn = card.querySelector('.btn-apply');
     const detailBtn = card.querySelector('.btn-details');
-    if (applyBtn)  applyBtn.textContent  = T('btnApply');
+    if (applyBtn) applyBtn.textContent = T('btnApply');
     if (detailBtn) detailBtn.textContent = T('btnDetails');
   });
 }
@@ -597,14 +597,14 @@ function translateDetailCard(container) {
   // Section headings
   container.querySelectorAll('h5.text-success, h6.text-success').forEach(h => {
     const txt = h.textContent.trim();
-    if (txt.includes('Description'))           h.innerHTML = '<i class="fas fa-info-circle me-2"></i>' + T('detailDescTitle');
-    if (txt.includes('How to Apply'))          h.innerHTML = '<i class="fas fa-list-ol me-2"></i>' + T('detailHowTitle');
-    if (txt.includes('Important'))             h.innerHTML = '<i class="fas fa-question-circle me-2"></i>' + T('detailFaqTitle');
-    if (txt.includes('Eligibility'))           h.innerHTML = '<i class="fas fa-check-circle me-2"></i>' + T('detailEligTitle');
-    if (txt.includes('Benefits'))              h.innerHTML = '<i class="fas fa-gift me-2"></i>' + T('detailBenTitle');
-    if (txt.includes('Period'))                h.innerHTML = '<i class="fas fa-calendar me-2"></i>' + T('detailPeriodTitle');
-    if (txt.includes('Helpline'))              h.innerHTML = '<i class="fas fa-phone me-2"></i>' + T('detailHelpTitle');
-    if (txt.includes('Documents'))            h.innerHTML = '<i class="fas fa-file-alt me-2"></i>' + T('detailDocsTitle');
+    if (txt.includes('Description')) h.innerHTML = '<i class="fas fa-info-circle me-2"></i>' + T('detailDescTitle');
+    if (txt.includes('How to Apply')) h.innerHTML = '<i class="fas fa-list-ol me-2"></i>' + T('detailHowTitle');
+    if (txt.includes('Important')) h.innerHTML = '<i class="fas fa-question-circle me-2"></i>' + T('detailFaqTitle');
+    if (txt.includes('Eligibility')) h.innerHTML = '<i class="fas fa-check-circle me-2"></i>' + T('detailEligTitle');
+    if (txt.includes('Benefits')) h.innerHTML = '<i class="fas fa-gift me-2"></i>' + T('detailBenTitle');
+    if (txt.includes('Period')) h.innerHTML = '<i class="fas fa-calendar me-2"></i>' + T('detailPeriodTitle');
+    if (txt.includes('Helpline')) h.innerHTML = '<i class="fas fa-phone me-2"></i>' + T('detailHelpTitle');
+    if (txt.includes('Documents')) h.innerHTML = '<i class="fas fa-file-alt me-2"></i>' + T('detailDocsTitle');
   });
   // Official Website button
   const btn = container.querySelector('.btn-warning');
@@ -618,17 +618,17 @@ function translateDetailCard(container) {
 // Detect which page we're on based on body or URL
 function detectPage() {
   const path = window.location.pathname;
-  if (path === '/' || path.includes('index'))          return 'index';
-  if (path.includes('govscheme'))                      return 'govscheme';
-  if (path.includes('financial'))                      return 'financial';
-  if (path.includes('insurance'))                      return 'insurance';
+  if (path === '/' || path.includes('index')) return 'index';
+  if (path.includes('govscheme')) return 'govscheme';
+  if (path.includes('financial')) return 'financial';
+  if (path.includes('insurance')) return 'insurance';
   if (path.includes('scheme_detail') || path.includes('scheme_detail')) return 'detail';
   // Fallback: check for key elements
-  if (document.getElementById('welcomeText'))          return 'index';
-  if (document.getElementById('schemeContainer'))      return 'govscheme';
-  if (document.getElementById('financialContainer'))   return 'financial';
-  if (document.getElementById('insuranceContainer'))   return 'insurance';
-  if (document.getElementById('schemeDetailContainer'))return 'detail';
+  if (document.getElementById('welcomeText')) return 'index';
+  if (document.getElementById('schemeContainer')) return 'govscheme';
+  if (document.getElementById('financialContainer')) return 'financial';
+  if (document.getElementById('insuranceContainer')) return 'insurance';
+  if (document.getElementById('schemeDetailContainer')) return 'detail';
   return 'index';
 }
 
@@ -638,17 +638,17 @@ function detectPage() {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Sync dropdowns
-  ['languageSwitcher', 'chatLangSelect'].forEach(function(id) {
+  ['languageSwitcher', 'chatLangSelect'].forEach(function (id) {
     const el = document.getElementById(id);
     if (el) el.value = currentLang;
   });
 
   // Remove unsupported language options (keep only en, hi, mr)
-  ['languageSwitcher', 'chatLangSelect'].forEach(function(id) {
+  ['languageSwitcher', 'chatLangSelect'].forEach(function (id) {
     const sel = document.getElementById(id);
     if (!sel) return;
-    sel.querySelectorAll('option').forEach(function(opt) {
-      if (!['en','hi','mr'].includes(opt.value)) opt.remove();
+    sel.querySelectorAll('option').forEach(function (opt) {
+      if (!['en', 'hi', 'mr'].includes(opt.value)) opt.remove();
     });
   });
 
@@ -684,12 +684,12 @@ document.addEventListener('DOMContentLoaded', function () {
 // ─────────────────────────────────────────────────────────────────────────────
 window.kisanLang = {
   // Call after scheme cards are rendered (govscheme / financial / insurance pages)
-  translateNewContent: function(container) {
+  translateNewContent: function (container) {
     translateSchemeCards(container);
   },
   // Call after scheme detail card renders (scheme_detail page)
-  translateDetailCard: function(container) {
+  translateDetailCard: function (container) {
     translateDetailCard(container);
   },
-  getCurrent: function() { return currentLang; }
+  getCurrent: function () { return currentLang; }
 };
