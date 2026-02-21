@@ -8,8 +8,14 @@
 <div class="container py-5">
   <div class="scheme-header text-center">
     <h1 class="scheme-title"><span class="emoji">🛡️</span>Insurance Schemes</h1>
-    <p class="scheme-subtitle">Crop, life, livestock & accident insurance for farmers</p>
+    <p class="scheme-subtitle">Crop, life, livestock &amp; accident insurance for farmers</p>
   </div>
+
+  <!-- Active Filter Pills -->
+  <div id="activeFilters" class="text-center mb-3"></div>
+
+  <div id="resultsInfo" class="text-center mb-3 text-muted small" style="display:none;"></div>
+
   <div id="insuranceContainer" class="scheme-grid mt-2">
     <div class="text-center py-5"><div class="spinner-border text-success"></div></div>
   </div>
@@ -18,38 +24,131 @@
 
 {% block scripts %}
 <script>
-const params = new URLSearchParams(window.location.search);
-let currentType = params.get('type') || 'All';
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  if(btn.dataset.type===currentType) btn.classList.add('active');
+const params      = new URLSearchParams(window.location.search);
+let currentType   = params.get('type')      || 'All';
+let coverType     = params.get('coverType') || '';
+let season        = params.get('season')    || '';
+let risk          = params.get('risk')      || '';
+let farmerName    = params.get('farmer')    || '';
+
+// Highlight active type filter
+document.querySelectorAll('#typeFilterBar .filter-btn').forEach(btn => {
+  if (btn.dataset.type === currentType) btn.classList.add('active');
   btn.addEventListener('click', function(){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('#typeFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentType = this.dataset.type;
-    loadSchemes(currentType);
+    coverType = ''; season = ''; risk = '';
+    document.getElementById('activeFilters').innerHTML = '';
+    loadSchemes();
   });
 });
-function loadSchemes(type) {
+
+// Show filter pills
+function showFilterPills() {
+  const pills = [];
+  if (farmerName)  pills.push(`👤 ${farmerName}`);
+  if (currentType && currentType !== 'All') pills.push(`🏛️ ${currentType}`);
+  if (coverType)   pills.push(`🛡️ ${coverType}`);
+  if (season)      pills.push(`🌦️ ${season}`);
+  if (risk)        pills.push(`⚠️ ${risk}`);
+  const box = document.getElementById('activeFilters');
+  if (pills.length > 0) {
+    box.innerHTML = `<span class="text-muted me-2">Filters:</span>` +
+      pills.map(p => `<span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1 me-1">${p}</span>`).join('') +
+      `<a href="/insurance" class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 ms-2 text-decoration-none">✖ Clear</a>`;
+  }
+}
+
+// Keyword maps
+const coverTypeKeywords = {
+  crop:      ['crop','fasal','bima','pmfby','kharif','rabi','sowing'],
+  life:      ['life','jeevan','death','jyoti','pmjjby','accident'],
+  calamity:  ['calamity','drought','flood','unseasonal','natural','relief','sahayata'],
+  accident:  ['accident','life','death','all farmer','bank account']
+};
+const seasonKeywords = {
+  kharif:  ['kharif','sowing','cotton','rice','soybean'],
+  rabi:    ['rabi','wheat','gram'],
+  annual:  ['annual','all season','all farmer','ongoing']
+};
+const riskKeywords = {
+  drought: ['drought','water stress','dry'],
+  flood:   ['flood','excess rain','unseasonal','waterlogging'],
+  pest:    ['pest','disease','insect'],
+  death:   ['death','life','accident','coverage','jeevan']
+};
+
+function clientFilter(schemes) {
+  let result = schemes;
+  if (coverType && coverTypeKeywords[coverType]) {
+    const kws = coverTypeKeywords[coverType];
+    result = result.filter(s => {
+      const text = `${s.title} ${s.description} ${s.tags} ${s.benefits}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  if (season && seasonKeywords[season]) {
+    const kws = seasonKeywords[season];
+    result = result.filter(s => {
+      const text = `${s.title} ${s.description} ${s.tags}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  if (risk && riskKeywords[risk]) {
+    const kws = riskKeywords[risk];
+    result = result.filter(s => {
+      const text = `${s.description} ${s.tags} ${s.benefits} ${s.eligibility}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  return result;
+}
+
+function loadSchemes() {
   const c = document.getElementById('insuranceContainer');
   c.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div></div>';
+
   let url = '/api/schemes?category=insurance';
-  if(type && type!=='All') url += '&type='+type;
-  fetch(url).then(r=>r.json()).then(schemes=>{
-    if(!schemes.length){c.innerHTML='<div class="text-center py-5"><h4 class="text-muted">No schemes found</h4></div>';return;}
-    c.innerHTML = schemes.map(s=>`
+  if (currentType && currentType !== 'All') url += '&type=' + currentType;
+
+  fetch(url).then(r => r.json()).then(schemes => {
+    let filtered = clientFilter(schemes);
+
+    const infoEl = document.getElementById('resultsInfo');
+    infoEl.style.display = 'block';
+    infoEl.innerHTML = filtered.length === schemes.length
+      ? `Showing all <strong>${filtered.length}</strong> insurance schemes`
+      : `Showing <strong>${filtered.length}</strong> of ${schemes.length} schemes matching your criteria`;
+
+    if (!filtered.length) {
+      c.innerHTML = `
+        <div class="text-center py-5">
+          <div style="font-size:3rem;">🔍</div>
+          <h4 class="text-muted mt-3">No schemes matched your filters</h4>
+          <p class="text-muted">Try different criteria or <a href="/insurance">view all insurance schemes</a></p>
+        </div>`;
+      return;
+    }
+
+    c.innerHTML = filtered.map(s => `
       <div class="scheme-card-modern">
-        <span class="badge ${s.scheme_type==='Central'?'bg-primary':'bg-success'} mb-2">${s.scheme_type}</span>
+        <span class="badge ${s.scheme_type === 'Central' ? 'bg-primary' : 'bg-success'} mb-2">${s.scheme_type}</span>
         <h4>${s.title}</h4>
-        <p><b>Eligibility:</b> ${s.eligibility||'See details'}</p>
-        <p><b>Benefits:</b> ${(s.benefits||'').substring(0,80)}...</p>
-        <p><b>Deadline:</b> ${s.deadline||'Ongoing'}</p>
+        <p><b>Eligibility:</b> ${s.eligibility || 'See details'}</p>
+        <p><b>Benefits:</b> ${(s.benefits || '').substring(0, 100)}...</p>
+        <p><b>Deadline:</b> ${s.deadline || 'Ongoing'}</p>
         <div class="scheme-btns-modern">
-          <a href="${s.official_url||'#'}" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="${s.official_url || '#'}" target="_blank" class="btn-apply">Apply Now</a>
           <a href="/scheme_detail?id=${s.id}" class="btn-details">View Details</a>
         </div>
       </div>`).join('');
+  }).catch(() => {
+    c.innerHTML = '<div class="alert alert-danger">Failed to load schemes. Please try again.</div>';
   });
 }
-loadSchemes(currentType);
+
+showFilterPills();
+loadSchemes();
 </script>
 {% endblock %}

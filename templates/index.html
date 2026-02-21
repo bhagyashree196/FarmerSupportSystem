@@ -5,15 +5,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top py-2">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="rounded-circle me-2" width="40" height="40" alt="Kisan Sahayata Logo" onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=🌾'">
-      <span class="fw-bold fs-4"></span>Kisan Sahayata</span>
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="rounded-circle me-2" width="40" height="40" alt="Kisan Sahayata Logo" onerror="this.src='https://via.placeholder.com/40x40/2e7d32/ffffff?text=KS'">
+      <span class="fw-bold fs-4">Kisan Sahayata</span>
     </a>
-    
     <div class="d-flex align-items-center gap-2">
       <select id="languageSwitcher" class="form-select form-select-sm bg-light border-0" style="width:120px; border-radius:20px;">
-        <option value="en"> English</option>
-        <option value="hi"> हिंदी</option>
-        <option value="mr"> मराठी</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="mr">🇮🇳 मराठी</option>
       </select>
       <a href="{{ url_for('admin_login') }}" class="btn btn-outline-light btn-sm px-3" style="border-radius:20px;">
         <i class="fas fa-lock me-1"></i>Admin
@@ -21,9 +20,6 @@
     </div>
   </div>
 </nav>
-
-<!-- Helpline Info Bar -->
-
 {% endblock %}
 
 {% block content %}
@@ -33,10 +29,7 @@
   <div class="container text-center">
     <h1 id="welcomeText" class="hero-title">🌾 Kisan Sahayata</h1>
     <p class="hero-subtitle" id="heroSubtitle">Empowering Farmers with Government Schemes & Financial Support</p>
-    <div class="row justify-content-center mt-4">
-         
-      </div>
-</div>
+  </div>
 </section>
 
 <!-- STATS -->
@@ -90,47 +83,35 @@
     <div class="col-md-6">
       <a href="{{ url_for('govscheme') }}" class="link-card">
         <i class="fas fa-seedling link-icon text-success"></i>
-        <div class="link-content">
-          <h5>PM-KISAN Scheme</h5>
-          <p class="text-muted mb-0">Direct income support of ₹6000/year</p>
-        </div>
+        <div class="link-content"><h5>PM-KISAN Scheme</h5><p class="text-muted mb-0">Direct income support of ₹6000/year</p></div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('insurance') }}" class="link-card">
         <i class="fas fa-umbrella link-icon text-primary"></i>
-        <div class="link-content">
-          <h5>Crop Insurance (PMFBY)</h5>
-          <p class="text-muted mb-0">Protect your crops against losses</p>
-        </div>
+        <div class="link-content"><h5>Crop Insurance (PMFBY)</h5><p class="text-muted mb-0">Protect your crops against losses</p></div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('financial') }}" class="link-card">
         <i class="fas fa-credit-card link-icon text-warning"></i>
-        <div class="link-content">
-          <h5>Kisan Credit Card</h5>
-          <p class="text-muted mb-0">Easy loans at 4% interest</p>
-        </div>
+        <div class="link-content"><h5>Kisan Credit Card</h5><p class="text-muted mb-0">Easy loans at 4% interest</p></div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
     <div class="col-md-6">
       <a href="{{ url_for('govscheme') }}" class="link-card">
         <i class="fas fa-water link-icon text-info"></i>
-        <div class="link-content">
-          <h5>Irrigation Schemes</h5>
-          <p class="text-muted mb-0">Subsidy for drip/sprinkler systems</p>
-        </div>
+        <div class="link-content"><h5>Irrigation Schemes</h5><p class="text-muted mb-0">Subsidy for drip/sprinkler systems</p></div>
         <i class="fas fa-chevron-right ms-auto text-muted"></i>
       </a>
     </div>
   </div>
 </div>
 
-<!-- TESTIMONIALS WITH REAL IMAGES -->
+<!-- TESTIMONIALS -->
 <div class="container mb-5 mt-5">
   <h2 class="section-title text-center mb-4">😊 Happy Farmers</h2>
   <div class="row g-4">
@@ -170,109 +151,219 @@
   </div>
 </div>
 
-<!-- ─── MODALS ─── (Keep existing modals unchanged) -->
-<!-- Govt Scheme Modal -->
+<!-- ═══════════════════════════════════════════════
+     MODAL 1 – GOVERNMENT SCHEMES
+═══════════════════════════════════════════════ -->
 <div class="modal fade" id="schemeModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 shadow-lg rounded-4">
-      <div class="modal-header bg-success text-white rounded-top-4">
-        <h5 class="modal-title fw-bold">🌾 Select Scheme Type</h5>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header text-white rounded-top-4" style="background:linear-gradient(135deg,135deg, #6eac72, #377c39);">
+        <div>
+          <h5 class="modal-title fw-bold mb-0">📋 Government Schemes</h5>
+          <small class="opacity-75">Find the right government scheme for you</small>
+        </div>
         <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
         <form id="schemeForm">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Farmer Name</label>
-            <input type="text" class="form-control" id="farmerName" placeholder="Enter your name" required>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-user  text-green me-1"></i>Farmer Name</label>
+              <input type="text" class="form-control rounded-3" id="farmerName" placeholder="Enter your name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt  text-green me-1"></i>District / Village</label>
+              <input type="text" class="form-control rounded-3" id="farmerLocation" placeholder="e.g. Pune, Nashik">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-flag  text-green me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <select class="form-select rounded-3" id="schemeType" required>
+                <option value="All">🌐 All Schemes</option>
+                <option value="Central">🇮🇳 Central Government</option>
+                <option value="Maharashtra">🟠 Maharashtra State</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-tractor  text-green me-1"></i>Farmer Type</label>
+              <select class="form-select rounded-3" id="schemefarmerType">
+                <option value="">All Farmer Types</option>
+                <option value="small">Small Farmer (&lt; 2 Hectare)</option>
+                <option value="marginal">Marginal Farmer (&lt; 1 Hectare)</option>
+                <option value="large">Large Farmer (&gt; 2 Hectare)</option>
+                <option value="sharecropper">Sharecropper / Tenant Farmer</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-seedling  text-green me-1"></i>Crop / Need</label>
+              <select class="form-select rounded-3" id="schemeCropNeed">
+                <option value="">Any Crop / Need</option>
+                <option value="kharif">Kharif Crops (Rice, Cotton, Soybean)</option>
+                <option value="rabi">Rabi Crops (Wheat, Gram)</option>
+                <option value="irrigation">Irrigation / Water</option>
+                <option value="income">Income Support</option>
+                <option value="loan_waiver">Loan Waiver</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-layer-group  text-green me-1"></i>Land Holding</label>
+              <select class="form-select rounded-3" id="schemeLand">
+                <option value="">Any Land Size</option>
+                <option value="below1">Below 1 Hectare</option>
+                <option value="1to2">1 – 2 Hectare</option>
+                <option value="above2">Above 2 Hectare</option>
+              </select>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Location (District/Village)</label>
-            <input type="text" class="form-control" id="farmerLocation" placeholder="Enter district or village" required>
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-success fw-bold py-2 rounded-pill fs-6">
+              🔍 Find Government Schemes <i class="fas fa-arrow-right ms-1"></i>
+            </button>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Scheme Type</label>
-            <select class="form-select" id="schemeType" required>
-              <option value="" disabled selected>-- Select Scheme Type --</option>
-              <option value="Central">Central</option>
-              <option value="Maharashtra">State (Maharashtra)</option>
-              <option value="All">All Schemes</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-success w-100 fw-bold py-2 rounded-pill">
-            View Schemes <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Financial Modal -->
+<!-- ═══════════════════════════════════════════════
+     MODAL 2 – FINANCIAL SUPPORT
+═══════════════════════════════════════════════ -->
 <div class="modal fade" id="financialModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 shadow-lg rounded-4">
-      <div class="modal-header bg-success text-white rounded-top-4">
-        <h5 class="modal-title fw-bold">💰 Financial Support</h5>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header text-white rounded-top-4" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+        <div>
+          <h5 class="modal-title fw-bold mb-0">💰 Financial Support</h5>
+          <small class="opacity-75">Loans, subsidies & financial assistance</small>
+        </div>
         <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
         <form id="financialForm">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Farmer Name</label>
-            <input type="text" class="form-control" id="financialFarmerName" required>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-user  text-green me-1"></i>Farmer Name</label>
+              <input type="text" class="form-control rounded-3" id="financialFarmerName" placeholder="Enter your name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt  text-green me-1"></i>District</label>
+              <input type="text" class="form-control rounded-3" id="financialLocation" placeholder="e.g. Pune, Nagpur">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-flag text-green me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <select class="form-select rounded-3" id="financialType" required>
+                <option value="All">🌐 All Schemes</option>
+                <option value="Central">🇮🇳 Central Government</option>
+                <option value="Maharashtra">🟠 Maharashtra State</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-hand-holding-usd  text-green me-1"></i>Support Type</label>
+              <select class="form-select rounded-3" id="financialSupportType">
+                <option value="">All Types</option>
+                <option value="loan">Crop Loan / KCC</option>
+                <option value="pension">Pension / Retirement</option>
+                <option value="infrastructure">Infrastructure / Warehouse</option>
+                <option value="subsidy">Subsidy / Grant</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-tractor  text-green me-1"></i>Farmer Type</label>
+              <select class="form-select rounded-3" id="financialFarmerType">
+                <option value="">All Farmer Types</option>
+                <option value="small">Small / Marginal Farmer</option>
+                <option value="sharecropper">Sharecropper / Tenant</option>
+                <option value="fpo">FPO / SHG Member</option>
+                <option value="entrepreneur">Agri-Entrepreneur</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-birthday-cake  text-green me-1"></i>Age Group</label>
+              <select class="form-select rounded-3" id="financialAge">
+                <option value="">Any Age</option>
+                <option value="18to40">18 – 40 years (Pension eligible)</option>
+                <option value="above40">Above 40 years</option>
+              </select>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Location</label>
-            <input type="text" class="form-control" id="financialLocation" required>
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+              🔍 Find Financial Schemes <i class="fas fa-arrow-right ms-1"></i>
+            </button>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Support Type</label>
-            <select class="form-select" id="financialType" required>
-              <option value="" disabled selected>-- Select Type --</option>
-              <option value="Central">Central</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="All">All</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-success w-100 fw-bold py-2 rounded-pill">
-            View Financial Schemes <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Insurance Modal -->
+<!-- ═══════════════════════════════════════════════
+     MODAL 3 – INSURANCE
+═══════════════════════════════════════════════ -->
 <div class="modal fade" id="insuranceModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 shadow-lg rounded-4">
-      <div class="modal-header bg-success text-white rounded-top-4">
-        <h5 class="modal-title fw-bold">🛡️ Insurance Schemes</h5>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header text-white rounded-top-4" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+        <div>
+          <h5 class="modal-title fw-bold mb-0">🛡️ Insurance Schemes</h5>
+          <small class="opacity-75">Crop, life & accident insurance for farmers</small>
+        </div>
         <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
         <form id="insuranceForm">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Farmer Name</label>
-            <input type="text" class="form-control" id="insuranceFarmerName" required>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-user text-primary me-1"></i>Farmer Name</label>
+              <input type="text" class="form-control rounded-3" id="insuranceFarmerName" placeholder="Enter your name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt text-primary me-1"></i>District</label>
+              <input type="text" class="form-control rounded-3" id="insuranceLocation" placeholder="e.g. Aurangabad">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-flag text-primary me-1"></i>Scheme Type <span class="text-danger">*</span></label>
+              <select class="form-select rounded-3" id="insuranceType" required>
+                <option value="All"> All Schemes</option>
+                <option value="Central">🇮🇳 Central Government</option>
+                <option value="Maharashtra"> Maharashtra State</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-shield-alt text-primary me-1"></i>Insurance Type</label>
+              <select class="form-select rounded-3" id="insuranceCoverType">
+                <option value="">All Insurance Types</option>
+                <option value="crop">Crop / Fasal Bima</option>
+                <option value="life">Life Insurance</option>
+                <option value="calamity">Natural Calamity Relief</option>
+                <option value="accident">Accident Insurance</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-seedling text-primary me-1"></i>Season</label>
+              <select class="form-select rounded-3" id="insuranceSeason">
+                <option value="">All Seasons</option>
+                <option value="kharif">Kharif (June – October)</option>
+                <option value="rabi">Rabi (November – March)</option>
+                <option value="annual">Annual Crops</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold"><i class="fas fa-exclamation-triangle text-primary me-1"></i>Risk Type</label>
+              <select class="form-select rounded-3" id="insuranceRisk">
+                <option value="">Any Risk</option>
+                <option value="drought">Drought</option>
+                <option value="flood">Flood / Excess Rain</option>
+                <option value="pest">Pest / Disease</option>
+                <option value="death">Death / Accident</option>
+              </select>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Location</label>
-            <input type="text" class="form-control" id="insuranceLocation" required>
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn fw-bold py-2 rounded-pill fs-6 text-white" style="background:linear-gradient(135deg, #6eac72, #377c39);">
+              🔍 Find Insurance Schemes <i class="fas fa-arrow-right ms-1"></i>
+            </button>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Insurance Type</label>
-            <select class="form-select" id="insuranceType" required>
-              <option value="" disabled selected>-- Select Type --</option>
-              <option value="Central">Central</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="All">All</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-success w-100 fw-bold py-2 rounded-pill">
-            View Insurance <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </form>
       </div>
     </div>
@@ -283,49 +374,52 @@
 
 {% block scripts %}
 <script>
-// Load live stats from API
+// Load live stats
 fetch('/api/schemes').then(r=>r.json()).then(all=>{
-  document.getElementById('statTotal').textContent = all.length + '+';
+  document.getElementById('statTotal').textContent  = all.length + '+';
   document.getElementById('statActive').textContent = all.length + '+';
-  document.getElementById('statGovt').textContent = all.filter(s=>s.category==='govt').length + '+';
-  document.getElementById('statFin').textContent = all.filter(s=>s.category==='financial').length + '+';
-  document.getElementById('statIns').textContent = all.filter(s=>s.category==='insurance').length + '+';
+  document.getElementById('statGovt').textContent   = all.filter(s=>s.category==='govt').length + '+';
+  document.getElementById('statFin').textContent    = all.filter(s=>s.category==='financial').length + '+';
+  document.getElementById('statIns').textContent    = all.filter(s=>s.category==='insurance').length + '+';
 });
 
-// Form handlers
+// ── GOVERNMENT SCHEME FORM ──
 document.getElementById('schemeForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const t = document.getElementById('schemeType').value;
-  localStorage.setItem('schemeType', t);
-  window.location.href = '/govscheme?type=' + t;
-});
-document.getElementById('financialForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  window.location.href = '/financial?type=' + document.getElementById('financialType').value;
-});
-document.getElementById('insuranceForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  window.location.href = '/insurance?type=' + document.getElementById('insuranceType').value;
+  const params = new URLSearchParams();
+  params.set('type',       document.getElementById('schemeType').value);
+  params.set('farmerType', document.getElementById('schemefarmerType').value);
+  params.set('cropNeed',   document.getElementById('schemeCropNeed').value);
+  params.set('land',       document.getElementById('schemeLand').value);
+  const name = document.getElementById('farmerName').value.trim();
+  if (name) params.set('farmer', name);
+  window.location.href = '/govscheme?' + params.toString();
 });
 
-// Search
-function performSearch() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  if (!q) return;
-  fetch('/api/schemes').then(r=>r.json()).then(schemes=>{
-    const found = schemes.filter(s =>
-      s.title.toLowerCase().includes(q) || (s.tags||'').toLowerCase().includes(q) || (s.description||'').toLowerCase().includes(q)
-    );
-    const div = document.getElementById('searchResults');
-    if (found.length === 0) {
-      div.innerHTML = '<div class="alert alert-warning mt-2">No schemes found. Try different keywords.</div>';
-    } else {
-      div.innerHTML = `<div class="alert alert-success mt-2">Found <b>${found.length}</b> scheme(s): ` +
-        found.slice(0,3).map(s=>`<a href="/scheme_detail?id=${s.id}" class="badge bg-success text-decoration-none me-1">${s.title}</a>`).join('') +
-        (found.length>3 ? `<span class="text-muted">+ ${found.length-3} more</span>` : '') + '</div>';
-    }
-  });
-}
-document.getElementById('searchInput').addEventListener('keypress', e => { if(e.key==='Enter') performSearch(); });
+// ── FINANCIAL FORM ──
+document.getElementById('financialForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const params = new URLSearchParams();
+  params.set('type',        document.getElementById('financialType').value);
+  params.set('supportType', document.getElementById('financialSupportType').value);
+  params.set('farmerType',  document.getElementById('financialFarmerType').value);
+  params.set('age',         document.getElementById('financialAge').value);
+  const name = document.getElementById('financialFarmerName').value.trim();
+  if (name) params.set('farmer', name);
+  window.location.href = '/financial?' + params.toString();
+});
+
+// ── INSURANCE FORM ──
+document.getElementById('insuranceForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const params = new URLSearchParams();
+  params.set('type',      document.getElementById('insuranceType').value);
+  params.set('coverType', document.getElementById('insuranceCoverType').value);
+  params.set('season',    document.getElementById('insuranceSeason').value);
+  params.set('risk',      document.getElementById('insuranceRisk').value);
+  const name = document.getElementById('insuranceFarmerName').value.trim();
+  if (name) params.set('farmer', name);
+  window.location.href = '/insurance?' + params.toString();
+});
 </script>
 {% endblock %}

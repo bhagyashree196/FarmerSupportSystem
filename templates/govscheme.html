@@ -8,10 +8,14 @@
 <div class="container py-5">
   <div class="scheme-header text-center">
     <h1 class="scheme-title"><span class="emoji">📋</span>Government Schemes</h1>
-    <p class="scheme-subtitle" id="selectedTypeText">Explore Central & Maharashtra Government Agricultural Schemes</p>
+    <p class="scheme-subtitle">Explore Central &amp; Maharashtra Government Agricultural Schemes</p>
   </div>
 
+  <!-- Active Filter Pills -->
+  <div id="activeFilters" class="text-center mb-3" style="display:none!important;"></div>
 
+  <!-- Results info -->
+  <div id="resultsInfo" class="text-center mb-3 text-muted small" style="display:none;"></div>
 
   <div id="schemeContainer" class="scheme-grid mt-2">
     <div class="text-center py-5">
@@ -24,44 +28,135 @@
 
 {% block scripts %}
 <script>
-const params = new URLSearchParams(window.location.search);
-let currentType = params.get('type') || localStorage.getItem('schemeType') || 'All';
+const params      = new URLSearchParams(window.location.search);
+let currentType   = params.get('type')      || 'All';
+let farmerType    = params.get('farmerType') || '';
+let cropNeed      = params.get('cropNeed')   || '';
+let land          = params.get('land')       || '';
+let farmerName    = params.get('farmer')     || '';
 
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  if(btn.dataset.type === currentType) btn.classList.add('active');
+// Highlight active filter btn
+document.querySelectorAll('#typeFilterBar .filter-btn').forEach(btn => {
+  if (btn.dataset.type === currentType) btn.classList.add('active');
   btn.addEventListener('click', function(){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('#typeFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentType = this.dataset.type;
-    loadSchemes(currentType);
+    farmerType = ''; cropNeed = ''; land = '';
+    document.getElementById('activeFilters').style.display = 'none';
+    loadSchemes();
   });
 });
 
-function loadSchemes(type) {
+// Show active filter pills from modal input
+function showFilterPills() {
+  const pills = [];
+  if (farmerName)  pills.push(`👤 ${farmerName}`);
+  if (currentType && currentType !== 'All') pills.push(`🏛️ ${currentType}`);
+  if (farmerType)  pills.push(`🚜 ${farmerType} farmer`);
+  if (cropNeed)    pills.push(`🌾 ${cropNeed}`);
+  if (land)        pills.push(`📐 Land: ${land}`);
+
+  const box = document.getElementById('activeFilters');
+  if (pills.length > 0) {
+    box.innerHTML = `<span class="text-muted me-2">Filters:</span>` +
+      pills.map(p => `<span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 me-1">${p}</span>`).join('') +
+      `<a href="/govscheme" class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 ms-2 text-decoration-none">✖ Clear</a>`;
+    box.style.display = 'block';
+  }
+}
+
+// Keyword maps for client-side filtering
+const farmerTypeKeywords = {
+  small:       ['small','marginal','2 hectare','less than 2'],
+  marginal:    ['marginal','1 hectare','less than 1'],
+  large:       ['large','all farmer'],
+  sharecropper:['sharecropper','tenant','all farmer']
+};
+const cropNeedKeywords = {
+  kharif:      ['kharif','rice','cotton','soybean'],
+  rabi:        ['rabi','wheat','gram'],
+  irrigation:  ['irrigation','drip','sprinkler','water','micro'],
+  income:      ['income','support','6000','direct benefit'],
+  loan_waiver: ['waiver','loan waiver','karj mafi']
+};
+const landKeywords = {
+  below1:  ['marginal','less than 1','below 1'],
+  '1to2':  ['small','2 hectare','marginal','all farmer'],
+  above2:  ['all farmer','large']
+};
+
+function clientFilter(schemes) {
+  let result = schemes;
+  if (farmerType && farmerTypeKeywords[farmerType]) {
+    const kws = farmerTypeKeywords[farmerType];
+    result = result.filter(s => {
+      const text = `${s.eligibility} ${s.description} ${s.tags}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  if (cropNeed && cropNeedKeywords[cropNeed]) {
+    const kws = cropNeedKeywords[cropNeed];
+    result = result.filter(s => {
+      const text = `${s.title} ${s.description} ${s.tags} ${s.benefits}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  if (land && landKeywords[land]) {
+    const kws = landKeywords[land];
+    result = result.filter(s => {
+      const text = `${s.eligibility} ${s.description}`.toLowerCase();
+      return kws.some(k => text.includes(k));
+    });
+  }
+  return result;
+}
+
+function loadSchemes() {
   const container = document.getElementById('schemeContainer');
   container.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-success"></div><p class="mt-2 text-muted">Loading...</p></div>';
+
   let url = '/api/schemes?category=govt';
-  if (type && type !== 'All') url += '&type=' + type;
-  fetch(url).then(r=>r.json()).then(schemes => {
-    if (schemes.length === 0) {
-      container.innerHTML = '<div class="text-center py-5"><h4 class="text-muted">No schemes found</h4></div>';
+  if (currentType && currentType !== 'All') url += '&type=' + currentType;
+
+  fetch(url).then(r => r.json()).then(schemes => {
+    let filtered = clientFilter(schemes);
+
+    const infoEl = document.getElementById('resultsInfo');
+    infoEl.style.display = 'block';
+    infoEl.innerHTML = filtered.length === schemes.length
+      ? `Showing all <strong>${filtered.length}</strong> government schemes`
+      : `Showing <strong>${filtered.length}</strong> of ${schemes.length} schemes matching your criteria`;
+
+    if (!filtered.length) {
+      container.innerHTML = `
+        <div class="text-center py-5">
+          <div style="font-size:3rem;">🔍</div>
+          <h4 class="text-muted mt-3">No schemes matched your filters</h4>
+          <p class="text-muted">Try different criteria or <a href="/govscheme">view all schemes</a></p>
+        </div>`;
       return;
     }
-    container.innerHTML = schemes.map(s => `
+
+    container.innerHTML = filtered.map(s => `
       <div class="scheme-card-modern">
-        <span class="badge ${s.scheme_type==='Central'?'bg-primary':'bg-success'} mb-2">${s.scheme_type}</span>
-        <span class="badge bg-success ms-1 mb-2">${s.status==='active'?'Active':'Inactive'}</span>
+        <span class="badge ${s.scheme_type === 'Central' ? 'bg-primary' : 'bg-success'} mb-2">${s.scheme_type}</span>
+        <span class="badge bg-success ms-1 mb-2">${s.status === 'active' ? 'Active' : 'Inactive'}</span>
         <h4>${s.title}</h4>
-        <p><b>Eligibility:</b> ${s.eligibility||'See details'}</p>
-        <p><b>Benefits:</b> ${(s.benefits||'').substring(0,80)}...</p>
-        <p><b>Deadline:</b> ${s.deadline||'Ongoing'}</p>
+        <p><b>Eligibility:</b> ${s.eligibility || 'See details'}</p>
+        <p><b>Benefits:</b> ${(s.benefits || '').substring(0, 100)}...</p>
+        <p><b>Deadline:</b> ${s.deadline || 'Ongoing'}</p>
         <div class="scheme-btns-modern">
-          <a href="${s.official_url||'#'}" target="_blank" class="btn-apply">Apply Now</a>
+          <a href="${s.official_url || '#'}" target="_blank" class="btn-apply">Apply Now</a>
           <a href="/scheme_detail?id=${s.id}" class="btn-details">View Details</a>
         </div>
       </div>`).join('');
+  }).catch(() => {
+    container.innerHTML = '<div class="alert alert-danger">Failed to load schemes. Please try again.</div>';
   });
 }
-loadSchemes(currentType);
+
+showFilterPills();
+loadSchemes();
 </script>
 {% endblock %}
