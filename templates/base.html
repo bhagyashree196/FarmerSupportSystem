@@ -1,166 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}Kisan Sahayata{% endblock %}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}"/>
+
+  <style>
+    /* ── Hide Google's own toolbar & banner ── */
+    .goog-te-banner-frame,
+    .goog-te-balloon-frame,
+    #goog-gt-tt,
+    .goog-te-balloon-frame { display: none !important; }
+
+    body { top: 0px !important; }
+
+    /* Keep the hidden combo accessible so JS can drive it */
+    #google_translate_element {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* Custom language dropdown styling */
+    .lang-dropdown {
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 5px 10px;
+      transition: all 0.2s;
+    }
+    .lang-dropdown option {
+      background: #1b5e20;
+      color: white;
+    }
+    .lang-dropdown:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+      border-color: #ffc107;
+    }
+    .lang-dropdown:hover {
+      background: rgba(255,255,255,0.25);
+    }
+  </style>
+
   {% block head %}{% endblock %}
 </head>
-
 <body>
-  <!-- Google Translate hidden container -->
-  <div id="google_translate_element" style="display:none;"></div>
 
-  {% block navbar %}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" class="circular-logo me-2" alt="Logo"
-          onerror="this.style.display='none'">
-        <span class="fw-bold">🌾 Kisan Sahayata</span>
+<!-- Google Translate mount point — hidden but functional -->
+<div id="google_translate_element"></div>
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="circular-logo me-2" alt="Logo"
+           onerror="this.style.display='none'">
+      <span class="fw-bold">🌾 Kisan Sahayata</span>
+    </a>
+    <div class="ms-auto d-flex align-items-center gap-2">
+
+      <!-- ── Custom Language Switcher ── -->
+      <select id="languageSwitcher" class="lang-dropdown">
+        <option value="en">🇬🇧 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="mr">🟠 मराठी</option>
+      </select>
+
+      {% block nav_extra %}
+      <a href="{{ url_for('index') }}" class="nav-home-btn ms-2">
+        <i class="fas fa-home me-1"></i>Home
       </a>
-      <div class="ms-auto d-flex align-items-center gap-2">
-        <!-- Language Selector -->
-        <select id="languageSwitcher" class="form-select form-select-sm lang-dropdown" style="width:auto;">
-          <option value="en">🇬🇧 English</option>
-          <option value="hi">🇮🇳 हिंदी</option>
-          <option value="mr">महा मराठी</option>
-          <option value="pa">ਪੰਜਾਬੀ</option>
-          <option value="te">తెలుగు</option>
-          <option value="ta">தமிழ்</option>
-        </select>
-        {% block nav_extra %}
-        <a href="{{ url_for('index') }}" class="nav-home-btn ms-2">
-          <i class="fas fa-home me-1"></i>Home
-        </a>
-        {% endblock %}
+      {% endblock %}
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h5>🌾 Kisan Sahayata</h5>
+        <p class="text-white-50 small" id="footerTagline">Your trusted partner in agricultural growth</p>
+      </div>
+      <div class="col-md-3">
+        <h6>Schemes</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{{ url_for('govscheme') }}" class="text-white-50">Government Schemes</a></li>
+          <li><a href="{{ url_for('financial') }}" class="text-white-50">Financial Support</a></li>
+          <li><a href="{{ url_for('insurance') }}" class="text-white-50">Insurance</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6>Helpline</h6>
+        <p class="text-white-50 small mb-1"><i class="fas fa-phone me-1"></i> PM-KISAN: 155261</p>
+        <p class="text-white-50 small mb-1"><i class="fas fa-phone me-1"></i> PMFBY: 1800-200-7710</p>
+        <p class="text-white-50 small"><i class="fas fa-phone me-1"></i> Maharashtra: 1800-233-0222</p>
       </div>
     </div>
-  </nav>
-  {% endblock %}
+    <hr class="border-secondary"/>
+    <div class="text-center">
+      <small class="text-white-50" id="rightsText">© 2025 Kisan Sahayata. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
 
-  {% block content %}{% endblock %}
+<!-- ===== CHATBOT ===== -->
+<button class="chatbot-float-btn" id="chatbotToggle" title="Chat with Kisan Mitra">
+  <i class="fas fa-robot"></i>
+</button>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <h5>🌾 Kisan Sahayata</h5>
-          <p class="text-white-50 small" id="footerTagline">Your trusted partner in agricultural growth</p>
-        </div>
-        <div class="col-md-3">
-          <h6>Schemes</h6>
-          <ul class="list-unstyled small">
-            <li><a href="{{ url_for('govscheme') }}" class="text-white-50">Government Schemes</a></li>
-            <li><a href="{{ url_for('financial') }}" class="text-white-50">Financial Support</a></li>
-            <li><a href="{{ url_for('insurance') }}" class="text-white-50">Insurance</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h6>Helpline</h6>
-          <p class="text-white-50 small mb-1"><i class="fas fa-phone me-1"></i> PM-KISAN: 155261</p>
-          <p class="text-white-50 small mb-1"><i class="fas fa-phone me-1"></i> PMFBY: 1800-200-7710</p>
-          <p class="text-white-50 small"><i class="fas fa-phone me-1"></i> Maharashtra: 1800-233-0222</p>
-        </div>
-      </div>
-      <hr class="border-secondary" />
-      <div class="text-center">
-        <small class="text-white-50" id="rightsText">© 2025 Kisan Sahayata. All rights reserved.</small>
+<div id="chatbot-box" class="chatbot-box">
+
+  <!-- ── HEADER ── -->
+  <div class="chatbot-header">
+    <div class="d-flex align-items-center gap-2">
+      <span class="chatbot-avatar">🤖</span>
+      <div>
+        <div class="fw-bold">Kisan Mitra</div>
+        <small class="opacity-75" id="chatbot-subtitle">AI Farming Assistant 🎤 Voice Ready</small>
       </div>
     </div>
-  </footer>
-
-  <!-- ===== CHATBOT ===== -->
-  <button class="chatbot-float-btn" id="chatbotToggle" title="Chat with Kisan Mitra">
-    <i class="fas fa-robot"></i>
-  </button>
-
-  <div id="chatbot-box" class="chatbot-box">
-    <div class="chatbot-header">
-      <div class="d-flex align-items-center gap-2">
-        <span class="chatbot-avatar">🤖</span>
-        <div>
-          <div class="fw-bold">Kisan Mitra</div>
-          <small class="opacity-75">AI Farming Assistant</small>
-        </div>
-      </div>
-      <div class="d-flex align-items-center gap-2">
-        <select id="chatLangSelect" class="form-select form-select-sm" style="width:auto;font-size:0.75rem;">
-          <option value="en">EN</option>
-          <option value="hi">HI</option>
-          <option value="mr">MR</option>
-          <option value="pa">PA</option>
-          <option value="te">TE</option>
-          <option value="ta">TA</option>
-        </select>
-        <span id="close-chatbot" style="cursor:pointer;font-size:1.2rem;">✖</span>
-      </div>
-    </div>
-
-    <div id="chatbot-messages" class="chatbot-messages">
-      <div class="bot-msg">
-        Namaskar 🙏 I am Kisan Mitra! I can help you find government schemes, loans, and insurance. Ask me anything!
-      </div>
-      <div class="bot-msg quick-replies">
-        <button class="quick-btn" onclick="sendQuick('PM-KISAN')">PM-KISAN</button>
-        <button class="quick-btn" onclick="sendQuick('Crop Insurance')">Crop Insurance</button>
-        <button class="quick-btn" onclick="sendQuick('KCC Loan')">KCC Loan</button>
-        <button class="quick-btn" onclick="sendQuick('Maharashtra schemes')">MH Schemes</button>
-      </div>
-    </div>
-
-    <div class="chatbot-input">
-      <input type="text" id="user-input" placeholder="Ask about schemes..." autocomplete="off" />
-      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+    <div class="d-flex align-items-center gap-2">
+      <select id="chatLangSelect" class="form-select form-select-sm"
+        style="width:auto;font-size:0.72rem;border-radius:12px;">
+        <option value="en">🇬🇧 EN</option>
+        <option value="hi">🇮🇳 HI</option>
+        <option value="mr">🟠 MR</option>
+      </select>
+      <span id="close-chatbot" style="cursor:pointer;font-size:1.2rem;" title="Close">✖</span>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/lang.js') }}"></script>
+  <!-- ── MESSAGES ── -->
+  <div id="chatbot-messages" class="chatbot-messages">
+    <div class="bot-msg">
+      🙏 Namaskar! I am <strong>Kisan Mitra</strong>!<br>
+      I can help with government schemes, loans &amp; insurance.<br><br>
+      <span style="font-size:0.82rem;color:#555;">
+        🎤 <strong>Press the mic button</strong> to speak in your language!<br>
+        🔊 I will also <strong>speak the reply</strong> back to you.
+      </span>
+    </div>
+    <div class="bot-msg quick-replies">
+      <button class="quick-btn" onclick="sendQuick('PM-KISAN')">🌾 PM-KISAN</button>
+      <button class="quick-btn" onclick="sendQuick('Crop Insurance')">🛡️ Crop Insurance</button>
+      <button class="quick-btn" onclick="sendQuick('KCC Loan')">💳 KCC Loan</button>
+      <button class="quick-btn" onclick="sendQuick('Maharashtra schemes')">🟠 MH Schemes</button>
+    </div>
+  </div>
 
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'en,hi,mr',
-          autoDisplay: false
-        },
-        'google_translate_element'
-      );
-    }
-  </script>
+  <!-- ── INPUT ROW ── -->
+  <div class="chatbot-input" style="display:flex;align-items:center;gap:6px;padding:8px 10px;">
+    <input type="text" id="user-input"
+      placeholder="बोलें या टाइप करें... / Speak or type..."
+      autocomplete="off"
+      style="flex:1;border-radius:20px;border:1px solid #c8e6c9;
+             padding:8px 14px;font-size:0.88rem;outline:none;"/>
+    <button id="send-btn"
+      style="background:linear-gradient(135deg,#2e7d32,#66bb6a);border:none;
+             border-radius:50%;width:38px;height:38px;color:white;
+             flex-shrink:0;cursor:pointer;">
+      <i class="fas fa-paper-plane" style="font-size:0.85rem;"></i>
+    </button>
+  </div>
 
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const langSelect = document.getElementById("languageSwitcher");
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
 
-      if (!langSelect) return;
+<!-- ═══════════════════════════════════════════════════
+     GOOGLE TRANSLATE  — load last so it can find the div
+═══════════════════════════════════════════════════ -->
+<script>
+  // Called by Google Translate script once loaded
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr',
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        async defer></script>
 
-      langSelect.addEventListener("change", function () {
-        const lang = this.value;
-        const googleCombo = document.querySelector(".goog-te-combo");
+<!-- ═══════════════════════════════════════════════════
+     LANGUAGE SWITCHER — drives Google Translate combo
+═══════════════════════════════════════════════════ -->
+<script>
+(function () {
 
-        if (googleCombo) {
-          googleCombo.value = lang;
-          googleCombo.dispatchEvent(new Event("change"));
+  // ── Trigger Google Translate to switch language ──
+  function applyGoogleTranslate(lang) {
+    // Set the cookie Google Translate reads on page load
+    document.cookie = 'googtrans=/en/' + lang + ';path=/;SameSite=Lax';
+
+    // Also drive the hidden combo (works when GT is already loaded)
+    const tryCombo = setInterval(function () {
+      const combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        clearInterval(tryCombo);
+        if (lang === 'en') {
+          // "en" means show original — click the "Show original" link if present
+          const orig = document.querySelector('.goog-te-menu-value span');
+          if (orig) orig.click();
+          // Or just reload without the cookie to get original
+          const restore = document.querySelector('a.goog-te-menu-value');
+          if (restore) restore.click();
+        } else {
+          combo.value = lang;
+          combo.dispatchEvent(new Event('change'));
         }
-      });
+      }
+    }, 200);
+
+    // Give up after 5 seconds (GT failed to load)
+    setTimeout(function () { clearInterval(tryCombo); }, 5000);
+  }
+
+  // ── "Show original" helper for English ──
+  function showOriginal() {
+    // Remove cookie
+    document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+    // Reload page without translation
+    window.location.reload();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const switcher = document.getElementById('languageSwitcher');
+    if (!switcher) return;
+
+    // ── Restore saved language on every page load ──
+    const cookieMatch = document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+    const savedLang   = cookieMatch ? cookieMatch[1] : 'en';
+
+    if (savedLang && savedLang !== 'en') {
+      switcher.value = savedLang;
+      // GT might not be ready yet — applyGoogleTranslate will wait
+      applyGoogleTranslate(savedLang);
+    }
+
+    // ── Listen for user change ──
+    switcher.addEventListener('change', function () {
+      const lang = this.value;
+      if (lang === 'en') {
+        showOriginal();
+      } else {
+        applyGoogleTranslate(lang);
+      }
     });
-  </script>
+  });
 
+})();
+</script>
 
-  {% block scripts %}{% endblock %}
+{% block scripts %}{% endblock %}
 </body>
-
 </html>
